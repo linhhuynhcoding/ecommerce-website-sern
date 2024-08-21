@@ -1,0 +1,28 @@
+{
+  "name": "ecommerce-website-sern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src\\index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linhhuynhcoding/ecommerce-website-sern.git"
+  },
+  "author": "younglungling",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linhhuynhcoding/ecommerce-website-sern/issues"
+  },
+  "homepage": "https://github.com/linhhuynhcoding/ecommerce-website-sern#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-handlebars": "^8.0.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.4"
+  }
+}
