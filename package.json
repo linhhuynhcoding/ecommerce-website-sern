@@ -19,10 +19,12 @@
   "homepage": "https://github.com/linhhuynhcoding/ecommerce-website-sern#readme",
   "dependencies": {
     "express": "^4.19.2",
-    "express-handlebars": "^8.0.1"
+    "express-handlebars": "^8.0.1",
+    "node-gyp": "^10.2.0"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "sass": "^1.77.8"
   }
 }
