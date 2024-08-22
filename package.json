@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src\\index.js",
+    "watch": "sass --watch src\\resources\\scss\\:src\\public\\css\\",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
