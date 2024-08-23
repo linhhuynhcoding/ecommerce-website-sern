@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src\\index.js",
+    "start": "nodemon --exec babel-node src\\index.js",
     "watch": "sass --watch src\\resources\\scss\\:src\\public\\css\\",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,13 +19,21 @@
   },
   "homepage": "https://github.com/linhhuynhcoding/ecommerce-website-sern#readme",
   "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-handlebars": "^8.0.1",
     "node-gyp": "^10.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/node": "^7.25.0",
+    "@babel/preset-env": "^7.25.3",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.9",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.4",
+    "prettier": "^3.3.3",
     "sass": "^1.77.8"
   }
 }
