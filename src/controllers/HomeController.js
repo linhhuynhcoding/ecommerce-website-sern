@@ -4,7 +4,7 @@ class HomeController {
         try {
         } catch (error) {            
         }
-        return res.render('home', {title: 'Home',});
+        return res.render('crud', {title: 'CRUD',});
     }       
 }
 

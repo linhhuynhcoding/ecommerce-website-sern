@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       name: DataTypes.STRING,
-      dob: DataTypes.Date,
+      dob: DataTypes.DATE,
       gender: DataTypes.ENUM(['Nam', 'Nữ', 'Khác']),
       phone: DataTypes.STRING,
       email: {

@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   Categories.init(
     {
       categoryID: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       parentID: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },
