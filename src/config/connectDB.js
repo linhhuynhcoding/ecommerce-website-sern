@@ -11,7 +11,13 @@ const { Sequelize } = require('sequelize');
 // });
 
 // Option 3: Passing parameters separately (other dialects)
-const sequelize = new Sequelize('younglungling', 'root', null, {
+
+require('dotenv').config();
+import { env as _env } from 'process';
+const env = _env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
+
+const sequelize = new Sequelize(config.database, config.username, config.password, {
     host: 'localhost',
     dialect: 'mysql', /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
     logging: false,
