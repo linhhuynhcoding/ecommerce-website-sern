@@ -1,0 +1,21 @@
+@import 'variables';
+
+h1 {
+    color: $red-color;
+    // color: green;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:  auto;    
+}
+
+main {
+    margin: auto;
+    min-width: 500px;
+    width: fit-content;
+    display: block;
+}
