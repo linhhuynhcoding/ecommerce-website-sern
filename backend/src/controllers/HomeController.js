@@ -1,5 +1,9 @@
 import db from '../models/index'
 class HomeController {
+    home = async (req, res) => {
+        
+        return res.render('homeAdmin', {title: 'HOME',});
+    }       
     index = async (req, res) => {
         try {
         } catch (error) {            
