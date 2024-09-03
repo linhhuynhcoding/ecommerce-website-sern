@@ -82,20 +82,21 @@ function ChildMenu({ cate }) {
 
 }
 
-function MainMenu() {
+function MainMenu({_id}) {
     const [cate, setCate] = useState('');
     // let cate = '';
     const [cateSub, setcateSub] = useState('');
 
-
-
     useEffect(() => {
-        const menuChild = document.getElementById(`menu-child`);
+        const menuChild = document.getElementById(`${_id}`);
         const handleHover = (e) => {
-            console.dir(e.target['dataset'].key);
             menuChild.classList.remove('is-disable');
-            if (subCates[e.target['dataset'].key])
+            if (subCates[e.target['dataset'].key]) {
+
                 setCate(e.target['dataset'].key);
+                console.log(cate);
+            }
+
         }
         const handleUnHover = () => {
             // setCate('');
@@ -103,6 +104,7 @@ function MainMenu() {
 
         }
         const handleMenuChild = () => {
+            console.log('hover')
             menuChild.classList.remove('is-disable');
         }
         const handleUnMenuChild = () => {
@@ -148,13 +150,13 @@ function MainMenu() {
                     }
 
                 </div>
-                <div id="menu-child" className={clsx('is-disable', styles.menuChild)}>
+                <div id={_id} className={clsx('is-disable', styles.menuChild)}>
                     <div className={clsx('', styles.menuChildContainer)} >
                         {
                             categoriesList.map((i, index) => {
                                 return (
                                     <>
-                                    { cate == i.code ? <ChildMenu key={i} cate={cate}/> : null}
+                                    { cate === i.code ? <ChildMenu key={i} cate={cate}/> : null}
                                     </>
                                 )
                             })

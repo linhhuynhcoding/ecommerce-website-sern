@@ -1,30 +1,68 @@
 import clsx from 'clsx';
 import styles from './header.module.scss';
+import MainMenu from '../MainMenu'
 import { useEffect, useState } from 'react';
 function Header() {
     const [img_url, setImg_url] = useState("/logo.png");
+    const [menu, setMenu] = useState(false);
+    const handleCloseHomeMenu = () => {
+        console.log('called')
+    }
 
 
     useEffect(() => {
+        const handle = () => {
+            if (menu == false) {
+                homeMenu.classList.add('is-disable');
+                cover.classList.add('is-disable');
+
+            }
+            else {
+                homeMenu.classList.remove('is-disable');
+                cover.classList.remove('is-disable');
+            }
+        }
+        let homeMenu = document.getElementById('homeMenu');
+        let cover = document.getElementById('cover');
+
+        handle();
+        console.log(menu);
+    }, [menu]);
+
+
+
+    useEffect(() => {
+        // const handleClickHomeMenu = () => {            
+        //     setMenu(!menu);
+        // }
+        // let btnMenu = document.getElementById('buttonMenu');
+        // btnMenu.addEventListener('click', handleClickHomeMenu);
+        let cover = document.getElementById('cover');
+        cover.addEventListener('click', () => { setMenu(false) });
+
+
         const handleScroll = () => {
             // console.log(window.scrollY);
             if (window.scrollY >= 200) {
-                setImg_url('/icon.png');     
-                document.getElementById('buttonMenu').classList.remove('is-disable');           
+                setImg_url('/icon.png');
+                document.getElementById('buttonMenu').classList.remove('is-disable');
             }
             else {
-                document.getElementById('buttonMenu').classList.add('is-disable');           
+                document.getElementById('buttonMenu').classList.add('is-disable');
                 setImg_url('/logo.png');
+                setMenu(false);
             }
         }
         document.addEventListener("scroll", handleScroll);
         return () => {
             document.removeEventListener("scroll", handleScroll)
+            cover.removeEventListener('click', () => { setMenu(false) });
+
         }
     }, []);
 
     // console.log('render')
-    
+
     return (
         <header className={clsx(styles.webHeader)}>
             <div id='topBanner' className={clsx(styles.topBanner)}>
@@ -45,9 +83,9 @@ function Header() {
                             </div>
                         </a>
                         <div id="buttonMenu" className={clsx(styles.button__menu, 'is-disable')}>
-                            <div className={clsx(styles.button__menuContainer)}>
-                                <i class="fi fi-br-list"></i>                                
-                                <a href="">Danh mục sản phẩm</a>
+                            <div onClick={() => { setMenu(!menu); }} className={clsx(styles.button__menuContainer)}>
+                                <i class="fi fi-br-list"></i>
+                                <span>Danh mục sản phẩm</span>
                             </div>
                         </div>
                     </div>
@@ -116,6 +154,9 @@ function Header() {
                     </a>
 
                 </nav>
+            </div>
+            <div id="homeMenu" className={clsx('is-disable', styles.mainmenuContainer)}>
+                <MainMenu _id='headMenu'/>
             </div>
         </header>
     );

@@ -1,0 +1,81 @@
+
+.ProductBlock {
+    box-sizing: border-box;
+    font-size: 1.5em;
+    font-weight: 700;
+    min-height: 400px;
+    height: 100%;
+    // background-color: red;
+    z-index: -1;
+    
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    display: flex;
+    
+    margin-bottom: 15px;
+    
+    .ContainerProduct {       
+        box-sizing: border-box;
+        background-color: transparent;
+        height: inherit;
+        min-width: 1200px;
+        max-width: 1500px;
+        width: 100%;
+        margin: 1px 0px;
+        padding: 15px;
+        display: flex;
+        flex-direction: row;            
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        .SwiperContainer {
+            width: 100%;            
+        }
+    }
+
+    .Container {
+        color: #fff;
+        box-sizing: border-box;
+        background-color: #f97a90;
+        width: 60%;
+        height: inherit;
+        min-width: 1200px;
+        max-width: 1500px;
+        margin: 1px 0px;
+        
+        .ProductBlockTitle {
+            color: #fff;
+            
+            box-sizing: border-box;
+            padding: 15px 5px;
+            display: flex;
+            flex-direction: row;            
+            justify-content: space-between;
+            align-content: center;
+            align-items: center;
+            text-align: center;
+            .title {
+                
+            }
+            .more {
+                font-size: 1rem;
+                font-weight: 300;
+            }
+            a {
+                padding: 0 20px;
+                color: #fff;
+                text-decoration: none;
+            }
+            a > div > i {
+                margin-left: 3px;
+                font-size: 1em;
+                line-height: 0px;
+            }
+            
+        }
+        
+    }
+}

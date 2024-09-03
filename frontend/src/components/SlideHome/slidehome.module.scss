@@ -1,0 +1,32 @@
+.imageSlider {
+    width: 60%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0px 10px;
+    padding: 0px;
+    // background-color: red;
+    // align-self: center;
+    // justify-content: center;
+    
+}
+.Container {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // z-index: -1;
+}
+
+.SwiperContainer {
+    position: relative;
+    height: 100%;
+    display: flex;
+    height: auto;
+    flex: 1 1 0%;
+
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+}

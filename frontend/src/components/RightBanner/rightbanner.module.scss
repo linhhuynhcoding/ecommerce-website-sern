@@ -1,0 +1,28 @@
+.rightBanner {
+    width: 20%;
+    // background-color: brown;
+}
+.Container {
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner{
+    width: 100%;
+    border-radius: 10px;
+    
+    
+    img {
+        border: 2px solid rgb(130, 130, 173);
+        border-radius: 10px;
+        width: inherit;
+        box-shadow: 1px 1px 1px rgb(192, 192, 192);
+
+    }
+
+    &:hover {
+        scale: 1.05;
+        transition: all 0.3s;
+    }
+}
