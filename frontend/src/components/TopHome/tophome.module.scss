@@ -1,0 +1,26 @@
+.topHomeContainer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+}
+.topHome {
+    width: 60%;
+    margin: 15px 10px;
+    min-width: 1200px;
+    max-width: 1500px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+
+    display: flex;
+}
+
+.imageSlider {
+    width: 15px;
+}
+
+.rightBanner {
+    width: 20%;
+}

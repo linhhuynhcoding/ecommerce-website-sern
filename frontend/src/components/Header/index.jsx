@@ -28,8 +28,9 @@ function Header() {
     return (
         <header className={clsx(styles.webHeader)}>
             <div id='topBanner' className={clsx(styles.topBanner)}>
-                Top Banner
-
+                <h4>
+                    SỐC : KHÔNG GIẢM !!!
+                </h4>
             </div>
 
             <div id='navTopBar' className={clsx(styles.navContainer)}>

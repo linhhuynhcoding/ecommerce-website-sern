@@ -1,6 +1,9 @@
-import { Helmet } from 'react-helmet'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
+import { Helmet } from 'react-helmet';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import TopHome from '../../components/TopHome';
+import clsx from 'clsx';
+import styles from './home.module.scss';
 
 function Home() {
     return (
@@ -15,6 +18,8 @@ function Home() {
             <Header />
             
             <main>
+                <div className={clsx(styles.clearHeader)}></div>
+                <TopHome/>
                 <img style={{width:1000}} src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp" alt="" />
             </main>
             

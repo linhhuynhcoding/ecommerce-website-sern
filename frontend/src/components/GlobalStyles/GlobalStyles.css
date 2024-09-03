@@ -6,7 +6,7 @@
 @import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-straight/css/uicons-regular-straight.css');
 @import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css');
 @import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-bold-rounded/css/uicons-bold-rounded.css');
-
+@import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css');
 body {
     font-family: 'Roboto';
     color: #161616;
@@ -29,5 +29,5 @@ body {
 }
 
 .is-disable {
-    display: none;
+    display: none!important;
 }
