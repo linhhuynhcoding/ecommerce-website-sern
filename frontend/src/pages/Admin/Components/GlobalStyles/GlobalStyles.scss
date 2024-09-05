@@ -15,5 +15,37 @@
     align-content: center;
     align-items: center;
     justify-content: space-between;
-
+    
+}
+.adminMenuContainer {
+    width: 15%;
+}
+.dashboard{
+    box-sizing: border-box;
+    width: 85%;
+    
+    .container {
+        box-sizing: border-box;
+        margin: 0px 10px 0px 10px;
+        padding: 10px;
+        h1 {
+            font-weight: 400;
+        }
+    }
+}
+.clearHeader{
+    display: block;
+    height: 80px;
+    width: 100%;
+    background-color: transparent;
+}
+.AdminHeaderContainer{
+    box-sizing: border-box;
+    background-color: #fff;
+    height: 80px;
+    width: inherit;
+    display: block;
+    position: fixed;
+    top: 0;
+    z-index: 1;
 }

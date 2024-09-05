@@ -104,7 +104,7 @@ function Header() {
 
 
 
-                    <a href="/" className={clsx(styles.abour__box)}>
+                    <a href="/" className={clsx(styles.about__box)}>
                         <div className={clsx(styles.about__boxIcon)}>
                             <i className={clsx('fi fi-tr-shipping-fast')}></i>
 
@@ -116,7 +116,7 @@ function Header() {
                             </p>
                         </div>
                     </a>
-                    <a href="/" className={clsx(styles.abour__box)}>
+                    <a href="/" className={clsx(styles.about__box)}>
                         <div className={clsx(styles.about__boxIcon)}>
                             <i className={clsx('fi fi-tr-cart-shopping-fast')}></i>
 
@@ -128,7 +128,7 @@ function Header() {
                             </p>
                         </div>
                     </a>
-                    <a href="/" className={clsx(styles.abour__box)}>
+                    <a href="/" className={clsx(styles.about__box)}>
                         <div className={clsx(styles.about__boxIcon)}>
                             <i className={clsx('fi fi-rs-bell-notification-social-media')}></i>
 
@@ -140,7 +140,7 @@ function Header() {
                             </p>
                         </div>
                     </a>
-                    <a href="/" className={clsx(styles.abour__box, styles.signin__box)}>
+                    <a href="/" className={clsx(styles.about__box, styles.signin__box)}>
                         <div className={clsx(styles.about__boxIcon)}>
                             <i className={clsx('fi fi-rr-user')}></i>
 

@@ -30,16 +30,20 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       categoryID: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       des: {
-        type: DataTypes.STRING,
+        type: DataTypes.BLOB,
       },
       shortDes: {
         type: DataTypes.STRING,
       },
       warranty: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      quantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },

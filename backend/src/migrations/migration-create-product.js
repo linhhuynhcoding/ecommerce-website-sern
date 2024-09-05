@@ -21,16 +21,20 @@ module.exports = {
           allowNull: false,
         },
         categoryID: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.STRING,
           allowNull: false,
         },
         des: {
-          type: Sequelize.STRING,
+          type: Sequelize.BLOB,
         },
         shortDes: {
           type: Sequelize.STRING,
         },
         warranty: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        },
+        quantity: {
           type: Sequelize.INTEGER,
           allowNull: false,
         },

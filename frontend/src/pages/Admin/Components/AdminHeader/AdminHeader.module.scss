@@ -1,0 +1,31 @@
+.AdminHeader{
+    box-sizing: border-box;
+    padding: 10px 20px;
+    height: 100%;
+    box-shadow: 0px 1px 1px gray;
+    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+    z-index: 10;
+    
+    .about__box {
+        // background-color: black;
+        font-size: 1.5em;
+        line-height: 0;
+        color: tomato;
+        z-index: 10;
+        margin-left: 5px;
+        .about__boxIcon {
+            margin: 0px 10px;
+        }
+        
+        &:hover {
+            opacity: .5;
+
+        }
+    }
+    
+}
+

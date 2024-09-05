@@ -1,10 +1,9 @@
 import Home from '../pages/Home';
-import AdminDashbroad from '../pages/Admin';
+import AdminDashbroad from '../pages/Admin/Dashboard';
 
 // Public routes
 const publicRoutes = [
     {path : '/', component : Home},
-    {path : '/admin', component : AdminDashbroad},
     // {},
     // {},
 ]
@@ -12,4 +11,8 @@ const publicRoutes = [
 const privateRoutes = [
 ]
 
-export { publicRoutes, privateRoutes };
+const adminRoutes = [
+    {path : 'dashboard', component : AdminDashbroad},
+]
+
+export { publicRoutes, adminRoutes, privateRoutes };
