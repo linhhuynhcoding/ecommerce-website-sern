@@ -14,6 +14,10 @@ module.exports = {
           type: Sequelize.STRING,
           allowNull: false,
         },
+        brandLogo: {
+          type: Sequelize.STRING,
+          allowNull: true,
+        },
         createAt: {
           allowNull: false,
           type: Sequelize.DATE,
@@ -37,6 +41,7 @@ module.exports = {
      *
      * Example:
      * await queryInterface.dropTable('users');
-     */
+    */
+    await queryInterface.dropTable('brands');
   }
 };

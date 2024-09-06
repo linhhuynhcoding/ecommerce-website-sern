@@ -25,6 +25,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      brandLogo: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       // Other model options go here

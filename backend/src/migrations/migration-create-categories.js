@@ -6,7 +6,7 @@ module.exports = {
     await queryInterface.createTable('categories',
       {
         categoryID: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.STRING,
           allowNull: false,
           primaryKey: true
         },
@@ -15,8 +15,8 @@ module.exports = {
           allowNull: false,
         },
         parentID: {
-          type: Sequelize.INTEGER,
-          allowNull: false,
+          type: Sequelize.STRING,
+          allowNull: true,
         },
         createAt: {
           allowNull: false,
@@ -41,6 +41,7 @@ module.exports = {
      *
      * Example:
      * await queryInterface.dropTable('users');
-     */
+    */
+    await queryInterface.dropTable('categories');
   }
 };

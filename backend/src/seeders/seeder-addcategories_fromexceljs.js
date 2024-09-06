@@ -1,5 +1,5 @@
 'use strict';
-const { getProducts } = require('./../utils/ExcelUtil.js');
+const { getCategories } = require('../utils/ExcelUtil.js');
 // import {getProducts, init} from './../utils/ExcelUtil.js';
 
 // export async function up(queryInterface, Sequelize) {
@@ -40,23 +40,17 @@ const { getProducts } = require('./../utils/ExcelUtil.js');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const products = await getProducts().then((x) => x);
-    // console.log(products);
+    const categories = await getCategories().then((x) => x);
+    // console.log(categories);
     // return;
 
-    await queryInterface.bulkInsert('products', [
+    await queryInterface.bulkInsert('categories', [
 
-      products.map((data, index) => {
+      categories.map((data, index) => {
         return {
-          sku: Number(data['sku']),
-          productName: data['productName'],
-          productPrice: Number(data['productPrice']),
           categoryID: data['categoryID'],
-          des: data['des'],
-          shortDes: data['shortDes'],
-          warranty: Number(data['warranty']),
-          brandCode: data['brandCode'],
-          quantity: Math.floor(Math.random() * 15),
+          categoryName: data['categoryName'],
+          parentID: data['parentID'],
           createAt: new Date(),
           updateAt: new Date(),
         }
@@ -64,6 +58,6 @@ module.exports = {
     ].flat(), {});
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('products', null, {});
+    return queryInterface.bulkDelete('categories', null, {});
   },
 };

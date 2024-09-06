@@ -96,5 +96,74 @@ async function getProducts() {
 
     return products;
 }
+async function getImages() {
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(filePath);
+    const worksheet = workbook.getWorksheet('product_images');
+    const images = [];
+    
+    worksheet.eachRow((row, rowNumber) => {
+        const image = {};
+        if (rowNumber === 1) return;
+        const r = row.values;
+        r.shift();
+        for (let i = 0; i < worksheet.columnCount; i++) {
+            const header = worksheet.getRow(1).values;
+            header.shift();
+            // console.log(header);
+            image[header[i]] = r[i];
+        }
+        images.push(image);
+        return;
+    })
 
-module.exports = { getProducts };
+    // console.log(images);
+    return images;
+}
+async function getCategories() {
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(filePath);
+    const worksheet = workbook.getWorksheet('categories');
+    const categories = [];
+    
+    worksheet.eachRow((row, rowNumber) => {
+        const category = {};
+        if (rowNumber === 1) return;
+        const r = row.values;
+        r.shift();
+        for (let i = 0; i < worksheet.columnCount; i++) {
+            const header = worksheet.getRow(1).values;
+            header.shift();
+            // console.log(header);
+            category[header[i]] = r[i];
+        }
+        categories.push(category);
+        return;
+    })
+
+    return categories;
+}
+async function getBrands() {
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(filePath);
+    const worksheet = workbook.getWorksheet('brands');
+    const brands = [];
+    
+    worksheet.eachRow((row, rowNumber) => {
+        const brand = {};
+        if (rowNumber === 1) return;
+        const r = row.values;
+        r.shift();
+        for (let i = 0; i < worksheet.columnCount; i++) {
+            const header = worksheet.getRow(1).values;
+            header.shift();
+            // console.log(header);
+            brand[header[i]] = r[i];
+        }
+        brands.push(brand);
+        return;
+    })
+
+    return brands;
+}
+module.exports = { getProducts, getImages, getCategories, getBrands };
