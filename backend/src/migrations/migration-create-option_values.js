@@ -11,7 +11,7 @@ module.exports = {
           primaryKey: true
         },
         valueCode: {
-          type: Sequelize.STRING,
+          type: Sequelize.INTEGER,
           allowNull: false,
           primaryKey: true
         },
@@ -42,6 +42,7 @@ module.exports = {
      *
      * Example:
      * await queryInterface.dropTable('users');
-     */
+    */
+    await queryInterface.dropTable('option_values');
   }
 };

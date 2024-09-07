@@ -24,10 +24,11 @@ function Home() {
                 <div className={clsx(styles.clearHeader)}></div>
                 <TopHome />
                 <div className={clsx(styles.Main)}>
-                    <ProductBlock backgroundColor={'background1'} />
-                    <ProductBlock backgroundColor={'background2'} />
-                    <ProductBlock backgroundColor={'background1'} />
-                    <ProductBlock backgroundColor={'background2'} />
+                    <ProductBlock key={'laptop'} backgroundColor={'background1'} categoryID={'laptop'}/>
+                    <ProductBlock key={'sanphamapple'} backgroundColor={'background2'} categoryID={'sanphamapple'}/>
+                    <ProductBlock key={'pc'} backgroundColor={'background1'} categoryID={'pc'}/>
+                    <ProductBlock key={'linhkien'} backgroundColor={'background2'} categoryID={'linhkien'}/>
+                    <ProductBlock key={'phukien'} backgroundColor={'background1'} categoryID={'phukien'}/>
                 </div>
                 <img style={{ width: 1000 }} src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp" alt="" />
             </main>

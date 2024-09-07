@@ -1,0 +1,37 @@
+main {
+    display: block;
+}
+.clearHeader {
+    height: 100px;
+    width: 100%;
+    background-color: #fff;
+    z-index: -1;
+}
+
+.Main {
+    margin: 10px 0;
+    
+}
+
+.listing {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    .Container{
+        background-color: aqua;
+        width: 60%;
+        height: 100%;
+        min-width: 1200px;
+        max-width: 1500px;
+        margin: 15px 10px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: center;
+        display: flex;
+    }
+
+}

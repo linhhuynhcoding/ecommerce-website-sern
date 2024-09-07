@@ -4,7 +4,9 @@
     "password": null,
     "database": "younglungling",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timestamps": false,
+    "timezone": "+07:00"
   },
   "hltest": {
     "username": "root",

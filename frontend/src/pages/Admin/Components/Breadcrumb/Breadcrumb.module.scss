@@ -1,11 +1,11 @@
 
-ul {
+.UL {
     display: flex;
     list-style: none;
     font-size: 1rem;
-    padding: 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding: 0px 0px 0px 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     text-transform: capitalize;
     font-style: italic;
     color: #444444;
@@ -19,7 +19,7 @@ ul {
         }
         &:last-child {
             a{
-                color: tomato;
+                color: #a5124f;
             }
         }
     }

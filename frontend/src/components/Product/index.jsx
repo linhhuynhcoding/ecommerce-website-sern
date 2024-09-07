@@ -12,30 +12,44 @@ function ButtonIntoCart() {
     );
 }
 
-function Product() {
+function Product({ props }) {
+    // console.log(props);
+    // 
+    const toMoney = (s) => {
+        let res = '';
+        for (let i = s.length - 1; i >= 0; i--) {
+            if (((s.length - i) % 3) === 0) {
+                res = '.' + s.slice(i, i + 3) + res;
+            }
+        }
+        res = s.slice(0, s.length % 3) + res;
+        if (res[0] === '.') res = res.slice(1, res.length);
+        return res;
+    }
+    const price = toMoney(props.productPrice.toString());
     return (
         <>
             <div className={clsx(styles.Product)}>
                 <div className={clsx(styles.Container)}>
-                    <a href="" className={clsx(styles.ContainerProduct)}>
+                    <a href="#" className={clsx(styles.ContainerProduct)}>
                         <div className={clsx(styles.containerDetail)}>
                             <div className={clsx(styles.imgBox)}>
-                                <img src="https://lh3.googleusercontent.com/jzjru3_5x_08cDrJOQuUZ0whGb_iYBnp4AdNk5ZmEckKmd48BZzGqUlQtxmqlBJg6UenokGTt6_SN-B_pQ=w230-rw" alt="" />
+                                <img src={props.images[0]['imageURL'] ?? ""} alt="" />
                             </div>
                             <div className={clsx(styles.brandBox)}>
                                 <span>
-                                NEWMEN
+                                    {props.brands['brandName']}
                                 </span>
                             </div>
-                            <div  className={clsx(styles.titleBox)}>
-                                Chuột không dây, điều khiển bằng niềm tin
+                            <div className={clsx(styles.titleBox)}>
+                                {props['productName']}
                             </div>
-                            <div  className={clsx(styles.priceBox)}>
-                                <p>199.000.000 ₫</p>
+                            <div className={clsx(styles.priceBox)}>
+                                { price}₫
                             </div>
                         </div>
                     </a>
-                    <ButtonIntoCart />                    
+                    <ButtonIntoCart />
                 </div>
             </div>
         </>

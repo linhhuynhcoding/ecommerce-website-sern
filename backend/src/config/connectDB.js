@@ -21,6 +21,7 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
     host: 'localhost',
     dialect: 'mysql', /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
     logging: false,
+    timestamps: false,
 });
 
 let connectDB = async () => {

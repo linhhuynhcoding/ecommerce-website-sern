@@ -1,4 +1,6 @@
 'use strict';
+import db from "../models";
+
 const {
   Model
 } = require('sequelize');
@@ -12,6 +14,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Product.hasOne(models.Brands, {
+        foreignKey : 'brandCode',
+        sourceKey : 'brandCode',
+        as: "brands",
+      });
+      Product.hasOne(models.Categories, {
+        foreignKey : 'categoryID',
+        sourceKey : 'categoryID',
+        as: "categories",
+      });
+      Product.hasMany(models.Product_Images, {
+        foreignKey : 'sku',
+        as: "images",
+      });
     }
   }
   Product.init(
@@ -56,7 +72,12 @@ module.exports = (sequelize, DataTypes) => {
       // Other model options go here
       sequelize, // We need to pass the connection instance
       modelName: 'Product', // We need to choose the model name
+      timestamps: false,
+
     },
   );
+  // Product.hasOne(Brands, {
+  //   foreignKey: 'brandCode',
+  // });
   return Product;
 };

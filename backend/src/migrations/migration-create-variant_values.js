@@ -11,7 +11,7 @@ module.exports = {
           primaryKey: true
         },
         variantCode: {
-          type: Sequelize.STRING,
+          type: Sequelize.INTEGER,
           allowNull: false,
           primaryKey: true
         },
@@ -21,7 +21,7 @@ module.exports = {
           primaryKey: true
         },
         valueCode: {
-          type: Sequelize.STRING,
+          type: Sequelize.INTEGER,
           allowNull: false,
         },
         createAt: {
@@ -47,6 +47,7 @@ module.exports = {
      *
      * Example:
      * await queryInterface.dropTable('users');
-     */
+    */
+    await queryInterface.dropTable('variant_values');
   }
 };

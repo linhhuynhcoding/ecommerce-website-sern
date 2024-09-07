@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true
             },
             variantCode: {
-                type: DataTypes.STRING,
+                type: DataTypes.INTEGER,
                 allowNull: false,
                 primaryKey: true
             },
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true
             },
             valueCode: {
-                type: DataTypes.STRING,
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
         },

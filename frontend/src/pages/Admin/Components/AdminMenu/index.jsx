@@ -23,49 +23,49 @@ function AdminMenu({_id}) {
                             <div className={clsx(styles.nav__icon)}>
                                 <i class="fi fi-sr-dashboard-panel"></i>                            
                                 </div>
-                            <div className={clsx(styles.nav__title)}>Dashboard</div>
+                            <div className={clsx(styles.nav__title)}>Danh mục</div>
                         </a></div>
-                    <div  onClick={() => {navigate('/admin/dashboard')}} id={'productBox'} className={clsx(styles.navBox, {[styles.active] : _id === 'productBox'})}>
-                        <a className={clsx(styles.nav)} href="">
+                    <div  onClick={() => {navigate('/admin/products')}} id={'productBox'} className={clsx(styles.navBox, {[styles.active] : _id === 'productBox'})}>
+                        <a className={clsx(styles.nav)} href="#">
                             <div className={clsx(styles.nav__icon)}>
                             <i class="fi fi-sr-box-open"></i>
                             </div>  
-                            <div className={clsx(styles.nav__title)}>Products</div>
+                            <div className={clsx(styles.nav__title)}>Sản phẩm</div>
                         </a></div>
                     <div  onClick={() => {navigate('/admin/dashboard')}} id={'addproductBox'} className={clsx(styles.navBox, {[styles.active] : _id === 'addproductBox'})}>
-                        <a className={clsx(styles.nav)} href="">
+                        <a className={clsx(styles.nav)} href="#">
                             <div className={clsx(styles.nav__icon)}>
                             <i class="fi fi-sr-add"></i>
                             </div>
-                            <div className={clsx(styles.nav__title)}>Add New Product</div>
+                            <div className={clsx(styles.nav__title)}>Thêm mới sản phẩm</div>
                         </a></div>
                     <div  onClick={() => {navigate('/admin/dashboard')}} id={'customerBox'} className={clsx(styles.navBox, {[styles.active] : _id === 'customerBox'})}>
-                        <a className={clsx(styles.nav)} href="">
+                        <a className={clsx(styles.nav)} href="#">
                             <div className={clsx(styles.nav__icon)}>
                             <i class="fi fi-sr-review"></i>
                                                         </div>
-                            <div className={clsx(styles.nav__title)}>Customers</div>
+                            <div className={clsx(styles.nav__title)}>Người dùng</div>
                         </a></div>
                     <div  onClick={() => {navigate('/admin/dashboard')}} id={'customerDetailBox'} className={clsx(styles.navBox, {[styles.active] : _id === 'customerDetailBox'})}>
-                        <a className={clsx(styles.nav)} href="">
+                        <a className={clsx(styles.nav)} href="#">
                             <div className={clsx(styles.nav__icon)}>
                             <i class="fi fi-ss-user-headset"></i>
                             </div>
-                            <div className={clsx(styles.nav__title)}>Customers Details</div>
+                            <div className={clsx(styles.nav__title)}>Thông tin người dùng</div>
                         </a></div>
                     <div  onClick={() => {navigate('/admin/dashboard')}} id={'orderBox'} className={clsx(styles.navBox, {[styles.active] : _id === 'orderBox'})}>
-                        <a className={clsx(styles.nav)} href="">
+                        <a className={clsx(styles.nav)} href="#">
                             <div className={clsx(styles.nav__icon)}>
                             <i class="fi fi-sr-order-history"></i>
                             </div>
-                            <div className={clsx(styles.nav__title)}>Orders</div>
+                            <div className={clsx(styles.nav__title)}>Đơn hàng</div>
                         </a></div>
                     <div  onClick={() => {navigate('/admin/dashboard')}} id={'orderDetailBox'} className={clsx(styles.navBox, {[styles.active] : _id === 'orderDetailBox'})}>
-                        <a className={clsx(styles.nav)} href="">
+                        <a className={clsx(styles.nav)} href="#">
                             <div className={clsx(styles.nav__icon)}>
                             <i class="fi fi-br-list"></i>
                             </div>
-                            <div className={clsx(styles.nav__title)}>Orders Details</div>
+                            <div className={clsx(styles.nav__title)}>Chi tiết đơn hàng</div>
                         </a></div>
                 </div>
             </div>

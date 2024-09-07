@@ -63,7 +63,7 @@ function ChildMenu({ cate }) {
                 subCates[cate].map((i, index) => {
                     return (
                         <div key={cate}>
-                            <h2>{i['title']}</h2>
+                            <h4>{i['title']}</h4>
                             {
                                 i['sub'].map((j, jindex) => {
                                     return (

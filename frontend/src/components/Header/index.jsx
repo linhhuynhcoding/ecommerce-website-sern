@@ -2,9 +2,10 @@ import clsx from 'clsx';
 import styles from './header.module.scss';
 import MainMenu from '../MainMenu'
 import { useEffect, useState } from 'react';
-function Header() {
+function Header({onMenu = false}) {
     const [img_url, setImg_url] = useState("/logo.png");
     const [menu, setMenu] = useState(false);
+    
     const handleCloseHomeMenu = () => {
         console.log('called')
     }
@@ -26,12 +27,15 @@ function Header() {
         let cover = document.getElementById('cover');
 
         handle();
-        console.log(menu);
     }, [menu]);
 
 
 
     useEffect(() => {
+        if (onMenu === true) {
+            setImg_url('/icon.png');
+            document.getElementById('buttonMenu').classList.remove('is-disable');
+        }
         // const handleClickHomeMenu = () => {            
         //     setMenu(!menu);
         // }
@@ -53,9 +57,13 @@ function Header() {
                 setMenu(false);
             }
         }
-        document.addEventListener("scroll", handleScroll);
+        if (!onMenu) {
+            document.addEventListener("scroll", handleScroll);
+        }
         return () => {
-            document.removeEventListener("scroll", handleScroll)
+            if (!onMenu) {
+                document.removeEventListener("scroll", handleScroll)
+            }
             cover.removeEventListener('click', () => { setMenu(false) });
 
         }

@@ -12,6 +12,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // Brands.hasOne(models.Product, {
+      //   foreignKey: 'brandCode',
+      // });
+      // Brands.hasOne(models.Product);
+
     }
   }
   Brands.init(
@@ -34,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       // Other model options go here
       sequelize, // We need to pass the connection instance
       modelName: 'Brands', // We need to choose the model name
+      timestamps: false,
     },
   );
   return Brands;

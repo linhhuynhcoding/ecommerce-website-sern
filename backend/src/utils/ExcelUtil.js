@@ -166,4 +166,142 @@ async function getBrands() {
 
     return brands;
 }
-module.exports = { getProducts, getImages, getCategories, getBrands };
+async function getOptions() {
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(filePath);
+    const worksheet = workbook.getWorksheet('options');
+    const options = [];
+    
+    worksheet.eachRow((row, rowNumber) => {
+        const option = {};
+        if (rowNumber === 1) return;
+        const r = row.values;
+        r.shift();
+        for (let i = 0; i < worksheet.columnCount; i++) {
+            const header = worksheet.getRow(1).values;
+            header.shift();
+            // console.log(header);
+            option[header[i]] = r[i];
+        }
+        options.push(option);
+        return;
+    })
+
+    return options;
+}
+async function getOption_Values() {
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(filePath);
+    const worksheet = workbook.getWorksheet('option_values');
+    const optionValues = [];
+    
+    worksheet.eachRow((row, rowNumber) => {
+        const values = {};
+        if (rowNumber === 1) return;
+        const r = row.values;
+        r.shift();
+        for (let i = 0; i < worksheet.columnCount; i++) {
+            const header = worksheet.getRow(1).values;
+            header.shift();
+            // console.log(header);
+            values[header[i]] = r[i];
+        }
+        optionValues.push(values);
+        return;
+    })
+
+    return optionValues;
+}
+async function getVariant_Values() {
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(filePath);
+    const worksheet = workbook.getWorksheet('variant_values');
+    const variantValues = [];
+    
+    worksheet.eachRow((row, rowNumber) => {
+        const values = {};
+        if (rowNumber === 1) return;
+        const r = row.values;
+        r.shift();
+        for (let i = 0; i < worksheet.columnCount; i++) {
+            const header = worksheet.getRow(1).values;
+            header.shift();
+            // console.log(header);
+            values[header[i]] = r[i];
+        }
+        variantValues.push(values);
+        return;
+    })
+
+    return variantValues;
+}
+async function getProduct_Options() {
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(filePath);
+    const worksheet = workbook.getWorksheet('product_options');
+    const productOptions = [];
+    
+    worksheet.eachRow((row, rowNumber) => {
+        const values = {};
+        if (rowNumber === 1) return;
+        const r = row.values;
+        r.shift();
+        for (let i = 0; i < worksheet.columnCount; i++) {
+            const header = worksheet.getRow(1).values;
+            header.shift();
+            // console.log(header);
+            values[header[i]] = r[i];
+        }
+        productOptions.push(values);
+        return;
+    })
+
+    return productOptions;
+}
+async function getAttributes() {
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(filePath);
+    const worksheet = workbook.getWorksheet('attributes');
+    const attributes = [];
+    
+    worksheet.eachRow((row, rowNumber) => {
+        const values = {};
+        if (rowNumber === 1) return;
+        const r = row.values;
+        r.shift();
+        for (let i = 0; i < worksheet.columnCount; i++) {
+            const header = worksheet.getRow(1).values;
+            header.shift();
+            // console.log(header);
+            values[header[i]] = r[i];
+        }
+        attributes.push(values);
+        return;
+    })
+
+    return attributes;
+}
+async function getAttribute_Products() {
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(filePath);
+    const worksheet = workbook.getWorksheet('product_attributes');
+    const attributes = [];
+    
+    worksheet.eachRow((row, rowNumber) => {
+        const values = {};
+        if (rowNumber === 1) return;
+        const r = row.values;
+        r.shift();
+        for (let i = 0; i < worksheet.columnCount; i++) {
+            const header = worksheet.getRow(1).values;
+            header.shift();
+            // console.log(header);
+            values[header[i]] = r[i];
+        }
+        attributes.push(values);
+        return;
+    })
+
+    return attributes;
+}
+module.exports = { getProducts, getImages, getCategories, getBrands, getOptions, getOption_Values, getVariant_Values, getProduct_Options, getAttributes, getAttribute_Products };

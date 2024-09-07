@@ -17,6 +17,7 @@
     margin-bottom: 15px;
     
     .ContainerProduct {       
+        
         box-sizing: border-box;
         background-color: transparent;
         height: inherit;
@@ -24,13 +25,16 @@
         max-width: 1500px;
         width: 100%;
         margin: 1px 0px;
-        padding: 15px;
+        padding: 5px;
         display: flex;
         flex-direction: row;            
         align-content: center;
         align-items: center;
         text-align: center;
         position: relative;
+        
+        align-items: stretch;
+        justify-content: center;
         .SwiperContainer {
             width: 100%;            
         }

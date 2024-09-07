@@ -1,24 +1,134 @@
 import clsx from 'clsx';
 import styles from './productblock.module.scss';
 import Product from '../Product';
+import { Children, useEffect, useState } from 'react';
 
 // Import Swiper........
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import { Scrollbar } from 'swiper/modules';
-//_____________________________
 
-const data = [
-    {code: 'lap', title: 'LAPTOP', href: '/c/laptop', },
-    {code: 'monitor', title: 'MÀN HÌNH', href: '/c/monitor', },
-    {code: 'pc', title: 'PC', href: '/c/', }
-]
+//________API SERVICE
+import { handleGetProducts } from './../../service/ProductService';
 
 
 //_____________________________
 
-function ProductBlock({backgroundColor}) {
+// const data = {
+// sku: 1201758,
+// productName: "Ổ cứng HDD WD Elements Portable 1TB 2.5\" 3.0 (WDBUZG0010BBK-WESN)",
+// productPrice: 1599000,
+// categoryID: "disk",
+// shortDes: "- Dung lượng: 1TB <br>- Kích thước: 2.5\" <br>- Kết nối: USB 3.0",
+// images: [
+// {
+// imageID: 1,
+// imageURL: "https://lh3.googleusercontent.com/4EpjE8i3shYTa6IdSRD4UjUCAW1ZYgA8gM07MAAZDoncWKSX965RLlWybXi2njKDhfGKs8RyuuTm0xkWVw"
+// }
+// ],
+// brands: {
+// brandName: "WD",
+// brandLogo: ""
+// }
+// }
+// 
+
+const categories = {
+    'laptop': "Laptop",
+    'sanphamapple': "Sản phẩm Apple",
+    'pc': "Máy tính để bàn",
+    'monitor': "Màn hình máy tính",
+    'linhkien': "Linh kiện máy tính",
+    'phukien': "Phụ kiện máy tính",
+}
+const sample = {
+    sku: 0,
+    productName: "Sản phẩm ABC",
+    productPrice: 99999999,
+    categoryID: "none",
+    shortDes: "",
+    images: [
+        {
+            imageID: 1,
+            imageURL: "https://dictionary.cambridge.org/images/thumb/white_noun_001_19234.jpg?version=6.0.31"
+        }
+    ],
+    brands: {
+        brandName: "BRAND",
+        brandLogo: ""
+    }
+}
+
+
+let swiperComponents = {
+    'laptop': [],
+    'sanphamapple': [],
+    'pc': [],
+    'linhkien': [],
+    'phukien': [],
+};
+let prev = 0;
+
+//_____________________________
+
+function MySwiper({ children }) {
+    return <>
+
+    </>
+}
+
+function ProductBlock({ backgroundColor, categoryID }) {
+    const [statusCode, setStatusCode] = useState(false);
+    let products = [];
+    let productComponents = [];
+    useEffect(() => {
+        async function getProducts(id, categoryID, limit) {
+            products = [];
+            productComponents = [];
+            prev = 0;
+
+            await handleGetProducts(id, categoryID, limit).then((res) => {
+                // console.log(res);
+                if (res.status === 200) {
+                    products = res.data['products'];
+                }
+            }).catch((reason) => { return reason });
+        }
+        function genarateProduct() {
+            for (let p of products) {
+                productComponents.push(
+                    <Product key={p.sku} props={p} />
+                )
+            }
+        }
+        function genarateSwiper() {
+            for (let i = 0; i < productComponents.length; i++) {
+                if ((i + 5) % 5 === 0 || i - 1 === productComponents.length) {
+                    console.log(swiperComponents);
+                    swiperComponents[categoryID].push(
+                        // <MySwiper children={products.slice(i, Math.min(i + 5, productComponents.length - i))} />
+                        // <MySwiper children={[<Product props={sample} />]} />
+                        <div className={clsx(styles.ContainerProduct)}>
+                            {productComponents.slice(i, Math.min(i + 5, productComponents.length))}
+                        </div>
+                    )
+                }
+            }
+        }
+        getProducts('all', categoryID, 15).then(() => {
+            genarateProduct();
+
+            // console.log(productComponents)
+            genarateSwiper();
+            setStatusCode(true);
+            console.log(categoryID + ': ')
+            console.dir(swiperComponents[categoryID])
+            // console.dir(productComponents.slice(0, 3))
+        });
+
+    }, []);
+
     return (
         <>
             <div className={clsx(styles.ProductBlock, '')}>
@@ -26,7 +136,7 @@ function ProductBlock({backgroundColor}) {
                 <div className={clsx(backgroundColor, styles.Container)}>
                     <div className={clsx(styles.ProductBlockTitle)}>
                         <a href="" className={clsx(styles.title)}>
-                            <div>MÀN HÌNH</div>
+                            <div>{categories[categoryID]}</div>
                         </a>
                         <a href="" className={clsx(styles.more)}>
                             <div>Xem tất cả
@@ -36,7 +146,7 @@ function ProductBlock({backgroundColor}) {
                     </div>
 
                 </div>
-                <div className={clsx(backgroundColor ,styles.ContainerProduct, styles.Container)}>
+                <div className={clsx(backgroundColor, styles.ContainerProduct, styles.Container)}>
                     <div className={clsx(styles.SwiperContainer)}>
                         <Swiper
                             scrollbar={{
@@ -45,33 +155,13 @@ function ProductBlock({backgroundColor}) {
                             modules={[Scrollbar]}
                             className="mySwiper"
                         >
-                            <SwiperSlide>
-                                <div  className={clsx(styles.ContainerProduct)}>
-                                <Product />
-                                <Product />
-                                <Product />
-                                <Product />
-                                <Product />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div  className={clsx(styles.ContainerProduct)}>
-                                <Product />
-                                <Product />
-                                <Product />
-                                <Product />
-                                <Product />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div  className={clsx(styles.ContainerProduct)}>
-                                <Product />
-                                <Product />
-                                <Product />
-                                <Product />
-                                <Product />
-                                </div>
-                            </SwiperSlide>
+                            {
+                                statusCode === true ? swiperComponents[categoryID].map((s, i) => {
+                                    return <SwiperSlide key={categoryID + i}>
+                                            {s}
+                                    </SwiperSlide>
+                                }) : "aaaaaaa"
+                            }
                         </Swiper>
                     </div>
 

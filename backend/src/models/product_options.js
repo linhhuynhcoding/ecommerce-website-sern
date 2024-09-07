@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       optionCode: {
         type: DataTypes.STRING,
         allowNull: false,
+        primaryKey: true
       },
     },
     {

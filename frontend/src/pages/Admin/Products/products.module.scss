@@ -1,0 +1,94 @@
+@import '~bootstrap/scss/bootstrap';
+
+.Container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    // background-color: brown;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+     
+    .HeadBar{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        box-sizing: border-box;
+        // background-color: yellow;
+        margin-bottom: 10px;
+        padding: 10px 0px;
+        .Toggle{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 200px;
+            text-align: left;
+            font-weight: 400px;
+            color: #000;
+            background-color: #fff;
+            border-color: gray;
+        }
+        .Menu {
+            width: 200px;
+        }
+
+        .HeadRight {
+            .searcgBar{
+                width: 60%;
+            }
+            width: 500px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;            
+            .button {
+                background-color: #a5124f;
+                border: none;
+
+                &:hover {
+                    opacity: .9;
+                }
+                
+            }
+        }
+    }
+
+    .Content {
+        font-size: 12px ;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+
+        box-sizing: border-box;
+        background-color: #ffd7e7;
+        // opacity: 15%;
+        padding: 16px;
+        border-radius: 6px;
+        height: 100%;
+        .TableBox {
+            box-sizing: border-box;
+            height: 100%;
+            padding: 10px;
+        }
+        .Table {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+            height: 100%;
+            border-radius: 6px;
+            img {
+                box-sizing: border-box;
+                width: auto;
+                height: auto;
+                max-height: 60px;
+            }
+        }
+    }
+
+}

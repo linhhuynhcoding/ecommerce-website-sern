@@ -13,6 +13,7 @@ module.exports = {
         optionCode: {
           type: Sequelize.STRING,
           allowNull: false,
+          primaryKey: true
         },
         createAt: {
           allowNull: false,
@@ -37,6 +38,7 @@ module.exports = {
      *
      * Example:
      * await queryInterface.dropTable('users');
-     */
+    */
+    await queryInterface.dropTable('product_options');
   }
 };
