@@ -3,11 +3,12 @@ import styles from './mainmenu.module.scss';
 import { createElement, useEffect, useState } from 'react';
 
 const categoriesList = [
-    { code: 'lap', icon: 'fi fi-rr-laptop', name: 'Laptop' },
-    { code: 'pc', icon: 'fi fi-rr-laptop', name: 'PC - Máy tính bàn' },
-    { code: 'monitor', icon: 'fi fi-rr-laptop', name: 'Màn hình máy tính' },
-    { code: 'cpn', icon: 'fi fi-rr-laptop', name: 'Linh kiện máy tính' },
-    { code: 'acc', icon: 'fi fi-rr-laptop', name: 'Phụ kiện máy tính' },
+    { code: 'lap', icon: 'fi fi-rr-laptop', name: 'Laptop', href: '/cate/laptop' },
+    { code: 'sanphamapple', icon: 'fi fi-rr-laptop', name: 'Sản phẩm Apple', href: '/cate/sanphamapple' },
+    { code: 'pc', icon: 'fi fi-rr-laptop', name: 'PC - Máy tính bàn', href: '/cate/pc' },
+    { code: 'monitor', icon: 'fi fi-rr-laptop', name: 'Màn hình máy tính', href: '/cate/monitor' },
+    { code: 'cpn', icon: 'fi fi-rr-laptop', name: 'Linh kiện máy tính', href: '/cate/linhkien' },
+    { code: 'acc', icon: 'fi fi-rr-laptop', name: 'Phụ kiện máy tính', href: '/cate/phukien' },
 ];
 
 const subCates = {
@@ -140,7 +141,7 @@ function MainMenu({_id}) {
                         categoriesList.map((i, index) => {
                             return (
                                 <div data-key={i.code} key={i.code} className={clsx(styles.labelMenuTree)}>
-                                    <a href="" className={clsx(styles.labelItem)}>
+                                    <a href={i.href} className={clsx(styles.labelItem)}>
                                         <i class={i.icon}></i>
                                         <span>{i.name}</span>
                                     </a>

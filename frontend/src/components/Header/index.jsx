@@ -148,7 +148,7 @@ function Header({onMenu = false}) {
                             </p>
                         </div>
                     </a>
-                    <a href="/" className={clsx(styles.about__box, styles.signin__box)}>
+                    <a href="/login" className={clsx(styles.about__box, styles.signin__box)}>
                         <div className={clsx(styles.about__boxIcon)}>
                             <i className={clsx('fi fi-rr-user')}></i>
 

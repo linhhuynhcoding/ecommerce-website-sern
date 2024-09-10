@@ -42,6 +42,15 @@ const categories = {
     'linhkien': "Linh kiện máy tính",
     'phukien': "Phụ kiện máy tính",
 }
+const categoriesList = {
+    'laptop': { code: 'lap', icon: 'fi fi-rr-laptop', name: 'Laptop', href: '/cate/laptop' },
+    'sanphamapple': { code: 'sanphamapple', icon: 'fi fi-rr-laptop', name: 'Sản phẩm Apple', href: '/cate/sanphamapple' },
+    'pc': { code: 'pc', icon: 'fi fi-rr-laptop', name: 'PC - Máy tính bàn', href: '/cate/pc' },
+    'monitor': { code: 'monitor', icon: 'fi fi-rr-laptop', name: 'Màn hình máy tính', href: '/cate/monitor' },
+    'linhkien': { code: 'cpn', icon: 'fi fi-rr-laptop', name: 'Linh kiện máy tính', href: '/cate/linhkien' },
+    'phukien': { code: 'acc', icon: 'fi fi-rr-laptop', name: 'Phụ kiện máy tính', href: '/cate/phukien' },
+};
+
 const sample = {
     sku: 0,
     productName: "Sản phẩm ABC",
@@ -88,7 +97,7 @@ function ProductBlock({ backgroundColor, categoryID }) {
             productComponents = [];
             prev = 0;
 
-            await handleGetProducts(id, categoryID, limit).then((res) => {
+            await handleGetProducts(id, categoryID, limit, null).then((res) => {
                 // console.log(res);
                 if (res.status === 200) {
                     products = res.data['products'];
@@ -136,9 +145,9 @@ function ProductBlock({ backgroundColor, categoryID }) {
                 <div className={clsx(backgroundColor, styles.Container)}>
                     <div className={clsx(styles.ProductBlockTitle)}>
                         <a href="" className={clsx(styles.title)}>
-                            <div>{categories[categoryID]}</div>
+                            <div>{categoriesList[categoryID].name}</div>
                         </a>
-                        <a href="" className={clsx(styles.more)}>
+                        <a href={categoriesList[categoryID].href} className={clsx(styles.more)}>
                             <div>Xem tất cả
                                 <i class="fi fi-rr-angle-small-right"></i>
                             </div>
@@ -160,7 +169,7 @@ function ProductBlock({ backgroundColor, categoryID }) {
                                     return <SwiperSlide key={categoryID + i}>
                                             {s}
                                     </SwiperSlide>
-                                }) : "aaaaaaa"
+                                }) : "Loading...."
                             }
                         </Swiper>
                     </div>

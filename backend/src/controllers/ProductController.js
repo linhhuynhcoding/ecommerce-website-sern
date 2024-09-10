@@ -4,10 +4,13 @@ class ProductController {
     handleGetAllProducts = async (req, res) => {
 
         const id = (req.query.id ?? 'all').toLowerCase();
-        const category = (req.query.category ?? 'all').toLowerCase();
-        const limit = req.query.limit ? Number(req.query.limit) : null;
+        
+        const category = (typeof req.query.category !== "undefined") ? (req.query.category === '' ? 'all' : req.query.category).toLowerCase() : 'all'
+        const pageSize = req.query.pageSize ? Number(req.query.pageSize) : null;
+        const page = req.query.page ? Number(req.query.page) : null;
         console.log(req.query.limit)
-        const products = await GetAllProduct(id, category, limit);
+        const products = await GetAllProduct(id, category, page, pageSize);
+
         
         return res.status(200).json({
             errCode: 0,

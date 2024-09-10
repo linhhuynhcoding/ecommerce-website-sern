@@ -1,6 +1,6 @@
 import db from "../models";
 import { Op } from "sequelize";
-export const GetAllProduct = (idProduct, category, limit) => {
+export const GetAllProduct = (idProduct, category, page, pageSize) => {
     return new Promise(async (resolve, reject) => {
         try {
             let products = {};
@@ -9,7 +9,8 @@ export const GetAllProduct = (idProduct, category, limit) => {
                     // order: [
                     //     ['productPrice', 'DESC'],
                     // ],
-                    limit: limit ?? null,
+                    limit: pageSize ?? null,
+                    offset: page ?? null,
                     where: {
                         
                     },

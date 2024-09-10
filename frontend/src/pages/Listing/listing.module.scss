@@ -1,6 +1,7 @@
 main {
     display: block;
 }
+
 .clearHeader {
     height: 100px;
     width: 100%;
@@ -10,7 +11,7 @@ main {
 
 .Main {
     margin: 10px 0;
-    
+    font-size: 1em;
 }
 
 .listing {
@@ -20,18 +21,62 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    
-    .Container{
-        background-color: aqua;
+
+    .Container {
+        box-sizing: border-box;
+        // background-color: tomato;
         width: 60%;
         height: 100%;
         min-width: 1200px;
         max-width: 1500px;
-        margin: 15px 10px;
+        padding: 0px 10px;
+        margin: 10px 0px 10px 0px;
         flex-direction: row;
         justify-content: space-between;
-        align-content: center;
+        align-items: flex-start;
         display: flex;
+
+
+
+
+        .productBar {
+            border: 0px !important;
+            font-size: 1.5em;
+            font-weight: 700;
+            box-sizing: inherit;
+            // background-color: #fff;
+            padding: 0px 10px ;
+            margin: 0px 10px 0px 10px;
+            width: 80%;
+            .wrapper {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+            .moreBox {
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                box-sizing: border-box;
+                font-size: 0.7em;
+                font-weight: 300;
+                text-decoration: none;
+                color: blue;
+                
+                .more {                    
+                    box-sizing: border-box;
+                    padding: 10px 20px;
+                    background-color: #fff;
+                    
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+
+            }
+        }
     }
 
 }
+

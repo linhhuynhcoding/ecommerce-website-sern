@@ -1,12 +1,13 @@
 import axios from "../axios";
 
-const handleGetProducts = async (id, categoryId, limit) => {
+const handleGetProducts = async (id, categoryId, pageSize, page) => {
 
-    const res = await axios.get('/api/get-product', {
+    const res = await axios.get('/api/products', {
         params: {
             id: id,
             category: categoryId,
-            limit: limit,
+            pageSize: pageSize,
+            page: page,
         }
 
     }).then((r) => {

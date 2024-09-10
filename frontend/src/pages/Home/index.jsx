@@ -6,8 +6,10 @@ import Footer from '../../components/Footer';
 import TopHome from '../../components/TopHome';
 import ProductBlock from '../../components/ProductBlock';
 
-
+import {handleCreateCookies} from '../../service/HomeService';
+ 
 function Home() {
+    handleCreateCookies();
     return (
         <>
             <Helmet>
@@ -21,7 +23,7 @@ function Home() {
 
             <main>
                 <div id="cover" className={clsx('is-disable', 'darkBox')}></div>
-                <div className={clsx(styles.clearHeader)}></div>
+                <div className={clsx('clearHeader')}></div>
                 <TopHome />
                 <div className={clsx(styles.Main)}>
                     <ProductBlock key={'laptop'} backgroundColor={'background1'} categoryID={'laptop'}/>

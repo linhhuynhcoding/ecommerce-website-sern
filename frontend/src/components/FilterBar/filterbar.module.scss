@@ -1,0 +1,93 @@
+.filterBar {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    align-content: center;
+    display: flex;
+
+    border-radius: 10px;
+    background-color: #fff;
+    box-sizing: inherit;
+    width: 20%;
+    padding: 15px;
+
+    font-size: 1em;
+    font-weight: 600;
+
+    >div {
+        padding: 10px;
+        // background-color: crimson;
+    }
+
+    >div+div {
+        margin-bottom: 10px;
+
+    }
+
+    >div+div::before {}
+
+    .divider {
+        display: flex;
+        box-sizing: border-box;
+        border-bottom: 0.5px solid rgb(197, 197, 197);
+        padding: 0px;
+        height: 0px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .filterPriceBox {
+
+        .inputPriceBox {
+            font-size: 0.8em;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+            .inputText {
+                padding: 5px;
+                width: 80px;
+            }
+        }
+    }
+
+    .filterBox{
+        margin: 0;
+        .filterTitle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            i {
+                line-height: 0;
+                font-size: 1em;
+            }
+        }
+
+        .filterContent {
+            display: none;
+            .filterCheckbox {
+                display: flex;
+                align-items: center;
+        
+                padding: 0px 10px;
+                margin-bottom: 5px;
+                
+                >input {
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        i.Active {
+            transform: rotate(90deg);
+            
+        }
+        
+        div.Active {
+            display: block !important;
+        }
+
+    }
+}
