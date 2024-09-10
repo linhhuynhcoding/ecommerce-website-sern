@@ -1,6 +1,27 @@
 import db from "../models";
 import bcrypt from 'bcrypt'
 
+export const ComparePass = (username, password) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const User = await db.User.findOne({
+                where: { userID: username },
+                attributes: ['password']
+            });
+
+            const check = await bcrypt.compare(password, User['password']).then((res) => {return res});
+            if (check) {
+                resolve();
+            }
+            else {
+                reject();
+            }
+        } catch (e) {
+            reject(e)
+        }
+    });
+}
+
 export const CreateUser = (email, username, password) => {
     return new Promise(async (resolve, reject) => {
         try {

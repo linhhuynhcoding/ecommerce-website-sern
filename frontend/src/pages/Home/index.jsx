@@ -6,10 +6,8 @@ import Footer from '../../components/Footer';
 import TopHome from '../../components/TopHome';
 import ProductBlock from '../../components/ProductBlock';
 
-import {handleCreateCookies} from '../../service/HomeService';
  
 function Home() {
-    handleCreateCookies();
     return (
         <>
             <Helmet>

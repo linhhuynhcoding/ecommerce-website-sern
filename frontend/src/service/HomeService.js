@@ -1,12 +1,12 @@
 import axios from "../axios";
 
-const handleCreateCookies = async (id, categoryId, pageSize, page) => {
+const handleAuth = async () => {
 
     const res = await axios.get('/',{ withCredentials: true }).then((r) => {
         return r;
     }
-    );
+    ).catch((e) => {return e});
     return res;
 }
 
-export { handleCreateCookies };
+export { handleAuth };

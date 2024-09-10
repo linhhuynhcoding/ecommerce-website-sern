@@ -1,12 +1,50 @@
 import db from '../models/index'
-import { CreateUser, GetAllUser } from '../services/UserService';
+import { CreateUser, GetAllUser, ComparePass } from '../services/UserService';
 import generateVerifyCode from "../utils/GenVerifyCode.js";
 import { sendVerifyCode } from './../utils/EmailUtil.js';
 class UserController {
 
     handleLogin = async (req, res) => {
-        const { username, password } = req.query;
+        const { username, password } = req.body;
+        // req.session.user = req.body;
         
+        if (!username || !password) {
+            return res.status(404).json({
+                errCode: 1,
+                errMessage: 'Thông tin không hợp lệ!',
+            });  
+        }
+        await GetAllUser(username).then(async (data) => {
+            if (data) {
+                await ComparePass(username, password).then((r) => {
+                    req.session.user = req.body;
+                    req.session.authenticated = true;
+                    return res.status(200).json({
+                        errCode: 0,
+                        errMessage: 'Đăng nhập thành công!',
+                    });                  
+                }).catch(e => {
+                    return res.status(404).json({
+                        errCode: 1,
+                        errMessage: 'Mật khẩu không đúng!',
+                    }); 
+                })
+            }
+            else {
+                return res.status(404).json({
+                    errCode: 1,
+                    errMessage: 'Tên đăng nhập hoặc mật khẩu không đúng!',
+                });                    
+            }
+        }).catch((e) => {
+            console.log(e);
+            return res.status(505).json({
+                statusCode: 505,
+                errCode: 1,
+                errMessage: 'Lỗi Server!',
+                err: e
+            });
+        });
     }
 
     handleGetUser = async (req, res) => {

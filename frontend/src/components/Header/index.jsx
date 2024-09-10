@@ -2,13 +2,20 @@ import clsx from 'clsx';
 import styles from './header.module.scss';
 import MainMenu from '../MainMenu'
 import { useEffect, useState } from 'react';
-function Header({onMenu = false}) {
+
+
+import { handleAuth } from '../../service/HomeService';
+
+
+function Header({ onMenu = false }) {
     const [img_url, setImg_url] = useState("/logo.png");
     const [menu, setMenu] = useState(false);
-    
+    const [auth, setAuth] = useState(false);
+
     const handleCloseHomeMenu = () => {
         console.log('called')
     }
+
 
 
     useEffect(() => {
@@ -32,6 +39,16 @@ function Header({onMenu = false}) {
 
 
     useEffect(() => {
+        handleAuth().then((res) => {
+            if (res?.status === 200) {
+                setAuth(true);
+            }
+            else {
+                setAuth(false);
+
+            }
+        })
+
         if (onMenu === true) {
             setImg_url('/icon.png');
             document.getElementById('buttonMenu').classList.remove('is-disable');
@@ -148,23 +165,39 @@ function Header({onMenu = false}) {
                             </p>
                         </div>
                     </a>
-                    <a href="/login" className={clsx(styles.about__box, styles.signin__box)}>
-                        <div className={clsx(styles.about__boxIcon)}>
-                            <i className={clsx('fi fi-rr-user')}></i>
+                    {auth
+                        ?
+                        <a href="/profile" className={clsx(styles.about__box, styles.signin__box)}>
+                            <div className={clsx(styles.about__boxIcon)}>
+                                <i className={clsx('fi fi-rr-user')}></i>
+                            </div>
+                            <div className={clsx(styles.about__boxContent)}>
+                                <p>
+                                    Trang<br />
+                                    cá nhân
+                                </p>
+                            </div>
+                        </a>
+                        :
+                        <a href="/login" className={clsx(styles.about__box, styles.signin__box)}>
+                            <div className={clsx(styles.about__boxIcon)}>
+                                <i className={clsx('fi fi-rr-user')}></i>
+                            </div>
+                            <div className={clsx(styles.about__boxContent)}>
+                                <div className={clsx(styles.about__boxContent)}>
+                                    <p>
+                                        Đăng nhập<br />
+                                        Đăng ký
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
 
-                        </div>
-                        <div className={clsx(styles.about__boxContent)}>
-                            <p>
-                                Đăng nhập<br />
-                                Đăng ký
-                            </p>
-                        </div>
-                    </a>
-
+                    }
                 </nav>
             </div>
             <div id="homeMenu" className={clsx('is-disable', styles.mainmenuContainer)}>
-                <MainMenu _id='headMenu'/>
+                <MainMenu _id='headMenu' />
             </div>
         </header>
     );

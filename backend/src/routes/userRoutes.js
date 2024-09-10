@@ -17,5 +17,5 @@ router
     // .post(verifyMail, UserController.handleCreateUser);
 router
     .route('/login')
-    .post()
+    .post(UserController.handleLogin)
 export default router;

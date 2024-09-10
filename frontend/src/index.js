@@ -20,7 +20,9 @@ root.render(
             return <Route key={route.path} path={route.path} element={<Page />} ></Route>;
           })}
 
+        <Route path="/" element={<App />}>          
 
+        </Route>
         </Route>
         <Route path="/admin" element={<AdminRoute />}>
             {adminRoutes.map((route, index) => {

@@ -8,6 +8,8 @@ import Dashboard from '../pages/Admin/Dashboard';
 import Products from '../pages/Admin/Products';
 import VerifyMail from '../pages/Register/VerifyMail';
 
+import Profile from '../pages/Profile'
+
 // Public routes
 const publicRoutes = [
     {path : '/', component : Home},
@@ -22,6 +24,8 @@ const publicRoutes = [
 ]
 
 const privateRoutes = [
+    {path : '/profile', component : Profile},
+
 ]
 
 const adminRoutes = [

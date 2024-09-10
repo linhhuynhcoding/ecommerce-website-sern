@@ -1,10 +1,7 @@
 import db from '../models/index'
 import {initSessionStorage} from './../middlewares/Session'
 class HomeController {
-    home = async (req, res) => {
-        
-        return res.render('homeAdmin', {title: 'HOME',});
-    }       
+      
     index = async (req, res) => {
         try {
         } catch (error) {            
@@ -19,14 +16,25 @@ class HomeController {
         return res.send("hi");
         return res.render('post_crud', {title: 'POST CRUD',});
     }       
-    createCookies = async (req, res) => {
+    home = async (req, res) => {
         console.log(`sessionID: ${req.session.id}`)
         // initSessionStorage(req, res, null);
         // res.setHeader('Content-Type', 'text/html');
-        res.setHeader('Set-Cookie', 'test=value;max-Age=3600;Path="/";');
+        // res.setHeader('Set-Cookie', 'test=value;max-Age=3600;Path="/";');
+        if (req.session.authenticated === true) {
+            return res.status(200).json({
+                errCode: 0,
+                errMessage: 'OK',
+                user: req.session.user['username'] ?? null,
+            });    
+        }
+        else {
+            return res.status(401).json({
+                errCode: 1,
+                errMessage: 'Can not Authenticated',
+            });    
 
-
-        return res.status(200).json(req.session);
+        }
     }
     
 }
