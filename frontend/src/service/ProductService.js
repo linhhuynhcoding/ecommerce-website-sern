@@ -8,7 +8,9 @@ const handleGetProducts = async (id, categoryId, pageSize, page) => {
             category: categoryId,
             pageSize: pageSize,
             page: page,
-        }
+        },
+        
+        // withCredentials: true
 
     }).then((r) => {
         return r;

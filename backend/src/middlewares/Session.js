@@ -10,8 +10,9 @@ const initSessionStorage = async (req, res, next) => {
 
 const initSession = async (app) => {
     await app.use(session({
-        secret: 'keyboard cat',
-        cookie: { maxAge: 24 * 60 * 60 * 1000, secure: false, httpOnly: true },
+        secret: 'younglungling',
+        cookie: { maxAge: 2 * 24 * 60 * 60 * 1000, secure: false, httpOnly: true },
+        // rolling: true,
         resave: false,
         saveUninitialized: true,
     }));

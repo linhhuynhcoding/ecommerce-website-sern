@@ -1,21 +1,32 @@
 import clsx from 'clsx';
 import styles from './header.module.scss';
 import MainMenu from '../MainMenu'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
+import { carts, getCart} from '../../utils/HelperCart';
 
-import { handleAuth } from '../../service/HomeService';
+import { handleAuth } from '../../service/UserService';
+import { 
+    handleAddtoCart,
+    handleRemovefromCart,
+    handleGetCart,
+} from '../../service/CartService';
+import CartPopUp from '../CartPopUp';
 
-
-function Header({ onMenu = false }) {
+function Header({ onMenu = false}) {
     const [img_url, setImg_url] = useState("/logo.png");
     const [menu, setMenu] = useState(false);
+    const [CPU, setCPU] = useState(false);
     const [auth, setAuth] = useState(false);
+
+    // const carts = useRef({
+    //     totalPrice: 0,
+    //     products: []
+    // });
 
     const handleCloseHomeMenu = () => {
         console.log('called')
     }
-
 
 
     useEffect(() => {
@@ -32,36 +43,39 @@ function Header({ onMenu = false }) {
         }
         let homeMenu = document.getElementById('homeMenu');
         let cover = document.getElementById('cover');
-
+        
         handle();
     }, [menu]);
-
-
-
+    
+    
+    
     useEffect(() => {
-        handleAuth().then((res) => {
-            if (res?.status === 200) {
-                setAuth(true);
-            }
-            else {
-                setAuth(false);
-
-            }
-        })
-
-        if (onMenu === true) {
-            setImg_url('/icon.png');
-            document.getElementById('buttonMenu').classList.remove('is-disable');
-        }
-        // const handleClickHomeMenu = () => {            
-        //     setMenu(!menu);
-        // }
-        // let btnMenu = document.getElementById('buttonMenu');
-        // btnMenu.addEventListener('click', handleClickHomeMenu);
         let cover = document.getElementById('cover');
-        cover.addEventListener('click', () => { setMenu(false) });
 
+        async function handleProfileBox() {
+            await handleAuth().then((res) => {
+                if (res?.status === 200) {
+                    setAuth(true);
+                }
+                else {
+                    setAuth(false);
+                    
+                }
+            })
+        }
 
+        // async function getCart() {
+        //     await handleGetCart(localStorage.getItem('username')).then((res) => {
+        //         console.log(res);
+        //         if (res?.status === 200) {
+        //             carts.current['totalPrice'] = res?.data['totalPrices'] ?? 0;
+        //             carts.current['products'] = res?.data['cart'] ?? [];
+        //         }
+        //         console.log(carts.current)
+        //     })            
+        // }
+        
+        
         const handleScroll = () => {
             // console.log(window.scrollY);
             if (window.scrollY >= 200) {
@@ -74,9 +88,19 @@ function Header({ onMenu = false }) {
                 setMenu(false);
             }
         }
+
+        cover.addEventListener('click', () => { setMenu(false) });
+
         if (!onMenu) {
             document.addEventListener("scroll", handleScroll);
         }
+        if (onMenu === true) {
+            setImg_url('/icon.png');
+            document.getElementById('buttonMenu').classList.remove('is-disable');
+        }
+        
+        handleProfileBox();
+        getCart();
         return () => {
             if (!onMenu) {
                 document.removeEventListener("scroll", handleScroll)
@@ -129,29 +153,34 @@ function Header({ onMenu = false }) {
 
 
 
-                    <a href="/" className={clsx(styles.about__box)}>
+                    <a href="https://zalo.me/0966126449" className={clsx(styles.about__box)}>
                         <div className={clsx(styles.about__boxIcon)}>
                             <i className={clsx('fi fi-tr-shipping-fast')}></i>
 
                         </div>
                         <div className={clsx(styles.about__boxContent)}>
                             <p>
-                                Tra cứu<br />
-                                đơn hàng
+                                Hotline<br />
+                                0966.126.449
                             </p>
                         </div>
                     </a>
-                    <a href="/" className={clsx(styles.about__box)}>
-                        <div className={clsx(styles.about__boxIcon)}>
-                            <i className={clsx('fi fi-tr-cart-shopping-fast')}></i>
+                    <a  href="/cart" className={clsx(styles.about__box)}>
+                        <div onMouseEnter={() => setCPU(true)} onMouseLeave={() => setCPU(false)} className={clsx(styles.about__box)}>
+                            <div className={clsx(styles.about__boxIcon)}>
+                                <i className={clsx('fi fi-tr-cart-shopping-fast')}></i>
+
+                            </div>
+                            <div  className={clsx(styles.about__boxContent)}>
+                                <p>
+                                    Giỏ<br />
+                                    hàng
+                                </p>
+                            </div>
 
                         </div>
-                        <div className={clsx(styles.about__boxContent)}>
-                            <p>
-                                Giỏ<br />
-                                hàng
-                            </p>
-                        </div>
+                        {CPU ? <CartPopUp cart={carts.current ?? null} handle={(v) => {setCPU(v)}} /> : null} 
+
                     </a>
                     <a href="/" className={clsx(styles.about__box)}>
                         <div className={clsx(styles.about__boxIcon)}>

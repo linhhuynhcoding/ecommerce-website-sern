@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 //---------------MY COMPONENTS
-
+import Loading from '../../components/Loading/index.jsx';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import FilterBar from '../../components/FilterBar';
@@ -37,6 +37,8 @@ const sample = {
 }
 function Listing() {
     const params = useParams();
+    const [loading, setLoading] = useState(false);
+
     let categoryID = params['categoryID'] ?? 'all';
     // console.log(params);
     const [statusCode, setStatusCode] = useState(false);
@@ -86,11 +88,11 @@ function Listing() {
         function genarateProduct() {
             for (let p of products) {
                 productComponents.current.push(
-                    <Product key={p.sku} props={p} />
+                    <Product setLoading={setLoading} key={p.sku} props={p} />
                 )
             }
         }
-        getProducts('all', params['categoryID'] ?? 'all', 8, (page - 1)*8).then((x) => {
+        getProducts('all', params['categoryID'] ?? 'all', 8, (page - 1) * 8).then((x) => {
             genarateProduct();
             if (x.length < 8) {
                 const elm = document.getElementById('morebox');
@@ -116,6 +118,8 @@ function Listing() {
             <Header onMenu={true} />
 
             <main>
+                {loading ? <Loading></Loading> : null}
+
                 <div id="cover" className={clsx('is-disable', 'darkBox')}></div>
                 <div className={clsx('clearHeader')}></div>
                 {/* <TopHome /> */}

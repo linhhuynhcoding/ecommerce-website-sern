@@ -7,6 +7,7 @@ import initWebRoutes from './routes/web';
 import connectDB from './config/connectDB';
 import cors from 'cors';
 import session from 'express-session'
+import cookieParser from 'cookie-parser'
 
 
 require('dotenv').config();
@@ -14,13 +15,19 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.use(cors({ credentials: true, origin: true }));
+app.use(cors({ 
+    origin: 'http://192.168.1.2:3000' ,
+    methods:['GET','POST','PUT','DELETE'],
+    credentials: true, 
+}));
 
 //HTTP LOGGER 
 app.use(morgan('combined'));
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+
+app.use(cookieParser())
 
 initSession(app);
 viewEngine(app);

@@ -1,37 +1,71 @@
 import clsx from 'clsx';
 import styles from './product.module.scss';
+import { toMoney } from './../../utils/StringUtil'
+import { useEffect } from 'react';
+import { handleAddtoCart } from '../../service/CartService';
+import { carts, getCart} from '../../utils/HelperCart';
 
+function ButtonIntoCart({ sku, handle }) {
 
-
-function ButtonIntoCart() {
     return (
         <>
-            <button className={clsx(styles.Button)} >Thêm vào giỏ</button>
+            <button onClick={handle} data-id={sku} className={clsx(styles.Button)} >Thêm vào giỏ</button>
 
         </>
     );
 }
 
-function Product({ props }) {
+function Product({ props, setLoading }) {
+
     // console.log(props);
     // 
-    const toMoney = (s) => {
-        let res = '';
-        for (let i = s.length - 1; i >= 0; i--) {
-            if (((s.length - i) % 3) === 0) {
-                res = '.' + s.slice(i, i + 3) + res;
+
+    // useEffect(() => {
+    //     const listOfBtn = document.querySelectorAll('div[data-content="productDetail"] > div > button');
+    //     const handleBtnToCart = (e) => {
+    //         e.stopPropagation();
+    //         e.preventDefault();
+    //         console.log(e.target);
+    //     }
+    //     console.log(listOfBtn)
+    //     for (let b of listOfBtn) {
+    //         b.addEventListener('click', handleBtnToCart);
+    //     }
+
+    //     return () => {
+    //         for (let b of listOfBtn) {
+    //             b.removeEventListener('click', handleBtnToCart);
+    //         }
+    //     }
+    // }, [])
+    const handleBtnToCart = async (e) => {
+        setLoading(true);
+        e.stopPropagation();
+        e.preventDefault();
+        const id = e.target?.dataset?.['id']
+        console.log(e.target?.dataset?.['id']);
+        if (!localStorage.username) {
+            alert("Vui lòng đăng nhập!");
+            return;
+        } 
+
+        await handleAddtoCart(localStorage.username, id, 1).then((res) => {
+            if (res?.status == 200) {
+                getCart();
+                setLoading(false);
+                console.log(res?.data?.errMessage);
             }
-        }
-        res = s.slice(0, s.length % 3) + res;
-        if (res[0] === '.') res = res.slice(1, res.length);
-        return res;
+        })
     }
+
+
+
     const price = toMoney(props.productPrice.toString());
     return (
         <>
-            <div className={clsx(styles.Product)}>
+            <div data-content="productDetail" data-id={props?.sku ?? 0} className={clsx(styles.Product)}>
                 <div className={clsx(styles.Container)}>
-                    <a href="#" className={clsx(styles.ContainerProduct)}>
+                    <a href={`/sku/${props?.sku}`} className={clsx(styles.ContainerProduct)}>
                         <div className={clsx(styles.containerDetail)}>
                             <div className={clsx(styles.imgBox)}>
                                 <img src={props.images[0]['imageURL'] ?? ""} alt="" />
@@ -45,11 +79,11 @@ function Product({ props }) {
                                 {props['productName']}
                             </div>
                             <div className={clsx(styles.priceBox)}>
-                                { price}₫
+                                {price}
                             </div>
                         </div>
                     </a>
-                    <ButtonIntoCart />
+                    <ButtonIntoCart handle={handleBtnToCart} sku={props?.sku} />
                 </div>
             </div>
         </>

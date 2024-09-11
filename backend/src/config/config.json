@@ -6,7 +6,10 @@
     "host": "127.0.0.1",
     "dialect": "mysql",
     "timestamps": false,
-    "timezone": "+07:00"
+    "timezone": "+07:00",
+    "define" : {
+      "freezeTableName" : true
+    }
   },
   "hltest": {
     "username": "root",

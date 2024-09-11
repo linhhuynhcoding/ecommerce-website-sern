@@ -1,0 +1,211 @@
+.Cart {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+
+    .Container {
+        font-size: 16px;
+        // background-color: white;
+        box-sizing: border-box;
+        // background-color: tomato;
+        width: 70%;
+        height: 100%;
+        padding: 10px;
+        margin: 20px 0px 30px 0px;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: stretch;
+        text-align: center;
+        display: flex;
+
+        .CartBox {
+            width: 70%;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            align-content: center;
+            display: flex;
+
+            border-radius: 10px;
+            background-color: #fff;
+            box-sizing: inherit;
+            padding: 15px;
+
+            font-size: 1em;
+            font-weight: 600;
+
+            .TableBox {
+                box-sizing: border-box;
+                height: 100%;
+                padding: 10px;
+            }
+            .Table {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                box-sizing: border-box;
+                height: 100%;
+                border-radius: 6px;
+                img {
+                    box-sizing: border-box;
+                    width: auto;
+                    height: auto;
+                    max-height: 60px;
+                }
+                .AdjustQuantity {
+                    > span > input {
+                        width: 40px;
+                    } 
+                    > span {
+                        margin-bottom: 10px;
+                    }
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: stretch;
+                }
+            }
+        
+            >div {
+                padding: 10px;
+                // background-color: crimson;
+            }
+
+            >div+div {
+                margin-bottom: 10px;
+
+            }
+
+            .nav {
+                font-size: 14px;
+                padding: 2px;
+                text-align: left;
+
+                a {
+
+                    color: black;
+
+                    &:hover {
+                        color: blue;
+                    }
+
+
+                }
+
+            }
+
+            .clicked {
+                a {
+                    color: blue;
+                }
+            }
+
+            .divider {
+                display: flex;
+                box-sizing: border-box;
+                border-bottom: 0.5px solid rgb(197, 197, 197);
+                padding: 0px;
+                height: 0px;
+                width: 100%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            text-wrap: wrap;
+            box-sizing: border-box;
+
+            .profileTitle {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                >i {
+                    font-size: 2em;
+                    margin-right: 10px;
+
+                }
+
+                .nameBox {
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 0.7em;
+                    text-align: left;
+                    // text-overflow: clip;
+                    text-wrap: wrap;
+                    word-break: break-word;
+
+                }
+
+            }
+
+
+        }
+
+        .PaymentBox {
+            width: 30%;
+            margin-left: 10px;
+            flex-direction: column;
+            justify-content: flex-start;
+            display: flex;
+            border-radius: 10px;
+            background-color: #fff;
+            box-sizing: inherit;
+            padding: 20px;
+            text-align: left;
+
+            .PaymentBtn {
+                margin-top: 20px;
+                height: 40px;
+                border-radius: 10px;
+                border: 0px;
+                background-color: tomato;
+                color: #fff;
+                font-weight: 700;
+            }
+        }
+
+    }
+}
+
+.Footer {
+    position: fixed !important;
+    bottom: 0 !important;
+    width: 100%;
+}
+
+.MiniProduct {
+    display: flex;
+    flex-direction: row;
+    justify-self: flex-start;
+    height: 90px;
+    box-sizing: border-box;
+
+    >img {
+        width: 20%;
+        height: auto;
+        border-radius: 4px;
+        border: 0.1px solid #cecece;
+    }
+
+    overflow: hidden;
+
+    >div {
+        box-sizing: border-box;
+        max-width: 80%;
+        width: 80%;
+        margin-left: 10px;
+        display: flex;
+        text-overflow: ellipsis;
+        word-wrap: break-all;
+        box-sizing: border-box;
+
+    }
+}

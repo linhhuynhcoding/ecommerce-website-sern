@@ -9,67 +9,208 @@
 
     .Container {
         font-size: 16px;
-        background-color: white;        
+        // background-color: white;
         box-sizing: border-box;
         // background-color: tomato;
         width: 60%;
         height: 100%;
-        min-height: 500px;
-        min-width: 300px;
-        max-width: 600px;
-        padding: 30px;
-        margin: 30px 0px 30px 0px;
-        flex-direction: column;
+        padding: 10px;
+        margin: 20px 0px 30px 0px;
+        flex-direction: row;
         justify-content: space-evenly;
         align-items: stretch;
         text-align: center;
         display: flex;
-        
-        .FormBox{
-            background-color: transparent;
-            text-align: left;
-            margin-top: 10px;
-            padding: 0px 20px;
-            display: flex;
+
+        .ProfileBox {
+            width: 20%;
             flex-direction: column;
-            .FormField{
+            align-items: stretch;
+            justify-content: flex-start;
+            align-content: center;
+            display: flex;
+
+            border-radius: 10px;
+            background-color: #fff;
+            box-sizing: inherit;
+            width: 20%;
+            padding: 15px;
+
+            font-size: 1em;
+            font-weight: 600;
+
+            >div {
+                padding: 10px;
+                // background-color: crimson;
+            }
+
+            >div+div {
+                margin-bottom: 10px;
+
+            }
+            .nav {
+                font-size: 14px;
+                padding: 2px;
+                text-align: left;
+                a {
+
+                    color: black;
+                    
+                    &:hover{
+                        color: blue;                        
+                        cursor: pointer;
+                        opacity: .8;
+                    }
+
+                    
+                    
+                }
+                
+            }
+            .clicked {
+                a{
+                    color: blue;                        
+                }                
+            }
+
+            .divider {
+                display: flex;
+                box-sizing: border-box;
+                border-bottom: 0.5px solid rgb(197, 197, 197);
+                padding: 0px;
+                height: 0px;
+                width: 100%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            text-wrap: wrap;    
+            box-sizing: border-box;
+            .profileTitle {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                > i {
+                    font-size: 2em;
+                    margin-right: 10px;
+                    
+                }
+                .nameBox {
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 0.7em;
+                    text-align: left;
+                    // text-overflow: clip;
+                    text-wrap: wrap;    
+                    word-break: break-word;
+                   
+                }
+                
+            }
+
+
+        }
+
+        .DetailBox {
+            width: 80%;
+            margin-left: 10px;
+            background-color: yellow;
+            flex-direction: column;
+            justify-content: flex-start;
+            display: flex;
+            border-radius: 10px;
+            background-color: #fff;
+            box-sizing: inherit;
+            padding: 20px;
+            text-align: left;
+
+            .FormBoxAddress {
+                display: flex;
+                flex-direction: row !important;
+                flex-wrap: wrap;
+                align-items: flex-end;
+                justify-content: flex-start;
+                .FormField {
+                    margin-right: 40px;
+                }
+            }
+
+            .FormBox, .FormBoxAddress {
+                // text-align: left;
+                margin-top: 10px;
+                // padding: 0px 20px;
                 display: flex;
                 flex-direction: column;
-                margin: 0px 50px 20px 50px;
 
-                label {
-                    margin-bottom: 20px;
-                    line-height: 0px;
-                }
-                span {
-                    font-size: 0.8em;
-                }
-                input {
-                    padding-top: 5px;
-                    padding-bottom: 5px;
-                    padding-left: 5px;
-                    padding-right: 5px;
+                .gen {
+                    flex-direction: row !important;
+
+                    margin-bottom: 30px !important;
+                    
                 }
 
-                input[type=submit] {
-                    background-color: rgb(255, 210, 88);
-                    border: 0px;
-                    padding-top: 5px;
-                    padding-bottom: 5px;
-                    padding-left: 5px;
-                    padding-right: 5px;
-                    color: #610a0a;
-                    font-weight: 700;
-                }
-                > div {
-                    margin-top: 5px;
-                    text-align: right;
+                .FormField {
+                    flex-direction: column;
+                    display: flex;
+                    margin-top: 8px;
+                    margin-bottom: 4px;
+
+                    .ratio  {
+                        margin-left: 20px;
+                        width: fit-content;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        align-items: flex-end;
+                        > label {
+                            margin-left: 10px;
+                            line-height: 0px;
+                        }
+                    }
+
+
+                    label {
+                        margin-bottom: 10px;
+                        font-weight: bold;
+                        // line-height: 0px;
+                    }
+
+                    span {
+                        font-size: 0.8em;
+                    }
+
+                    input {
+                        padding-top: 5px;
+                        padding-bottom: 5px;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                        
+                    }
+
+                    input[type=submit] {
+                        background-color: rgb(255, 210, 88);
+                        border: 0px;
+                        padding-top: 5px;
+                        padding-bottom: 5px;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                        color: #610a0a;
+                        font-weight: 700;
+                    }
+
+                    >div {
+                        margin-top: 5px;
+                        text-align: right;
+                    }
                 }
             }
         }
+
     }
 }
-.Footer{
+
+.Footer {
     position: fixed !important;
     bottom: 0 !important;
     width: 100%;

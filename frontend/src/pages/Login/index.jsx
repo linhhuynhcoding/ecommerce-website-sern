@@ -44,6 +44,7 @@ function Login() {
                 showError(res?.response?.data?.errMessage)
             }
             else {
+                localStorage.setItem('username', username);
                 showSuccess("Đăng nhập thành công!")
                 const sleep = ms => new Promise(r => setTimeout(r, 1000));
                 setLoading(true);

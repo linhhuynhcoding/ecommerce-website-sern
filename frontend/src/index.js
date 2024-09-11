@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 // import './index.css';
 import App from './App';
 import AdminRoute from './pages/Admin/AdminRoute';
+import PrivateRoute from './components/PrivateRoutes';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { publicRoutes, adminRoutes, privateRoutes } from './routes';
@@ -11,29 +12,32 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <>
-  {/* <React.StrictMode> */}
+    {/* <React.StrictMode> */}
     <Router>
       <Routes>
-        <Route path="/" element={<App />}>          
+        <Route path="/" element={<App />}>
           {publicRoutes.map((route, index) => {
             const Page = route.component;
             return <Route key={route.path} path={route.path} element={<Page />} ></Route>;
           })}
 
-        <Route path="/" element={<App />}>          
-
-        </Route>
-        </Route>
-        <Route path="/admin" element={<AdminRoute />}>
-            {adminRoutes.map((route, index) => {
+          <Route path="/" element={<PrivateRoute />}>
+            {privateRoutes.map((route, index) => {
               const Page = route.component;
               return <Route key={route.path} path={route.path} element={<Page />} ></Route>;
             })}
           </Route>
+        </Route>
+        <Route path="/admin" element={<AdminRoute />}>
+          {adminRoutes.map((route, index) => {
+            const Page = route.component;
+            return <Route key={route.path} path={route.path} element={<Page />} ></Route>;
+          })}
+        </Route>
 
       </Routes>
     </Router>
-  {/* </React.StrictMode> */}
+    {/* </React.StrictMode> */}
   </>
 
 );

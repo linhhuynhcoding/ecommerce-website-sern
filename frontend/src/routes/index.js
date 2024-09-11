@@ -9,6 +9,7 @@ import Products from '../pages/Admin/Products';
 import VerifyMail from '../pages/Register/VerifyMail';
 
 import Profile from '../pages/Profile'
+import Cart from '../pages/Cart';
 
 // Public routes
 const publicRoutes = [
@@ -21,6 +22,7 @@ const publicRoutes = [
     {path : '/register', component : Register},
     {path : '/register/verify', component : VerifyMail},
     // {},
+    {path : '/cart', component : Cart},
 ]
 
 const privateRoutes = [

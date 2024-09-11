@@ -5,9 +5,14 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import TopHome from '../../components/TopHome';
 import ProductBlock from '../../components/ProductBlock';
+import Loading from '../../components/Loading/index.jsx';
 
- 
+import { useEffect, useState } from 'react';
+
+
 function Home() {
+    const [loading, setLoading] = useState(false);
+
     return (
         <>
             <Helmet>
@@ -20,15 +25,17 @@ function Home() {
             <Header />
 
             <main>
+                {loading ? <Loading></Loading> : null}
+
                 <div id="cover" className={clsx('is-disable', 'darkBox')}></div>
                 <div className={clsx('clearHeader')}></div>
                 <TopHome />
                 <div className={clsx(styles.Main)}>
-                    <ProductBlock key={'laptop'} backgroundColor={'background1'} categoryID={'laptop'}/>
-                    <ProductBlock key={'sanphamapple'} backgroundColor={'background2'} categoryID={'sanphamapple'}/>
-                    <ProductBlock key={'pc'} backgroundColor={'background1'} categoryID={'pc'}/>
-                    <ProductBlock key={'linhkien'} backgroundColor={'background2'} categoryID={'linhkien'}/>
-                    <ProductBlock key={'phukien'} backgroundColor={'background1'} categoryID={'phukien'}/>
+                    <ProductBlock setLoading={setLoading} key={'laptop'} backgroundColor={'background1'} categoryID={'laptop'} />
+                    <ProductBlock setLoading={setLoading} key={'sanphamapple'} backgroundColor={'background2'} categoryID={'sanphamapple'} />
+                    <ProductBlock setLoading={setLoading} key={'pc'} backgroundColor={'background1'} categoryID={'pc'} />
+                    <ProductBlock setLoading={setLoading} key={'linhkien'} backgroundColor={'background2'} categoryID={'linhkien'} />
+                    <ProductBlock setLoading={setLoading} key={'phukien'} backgroundColor={'background1'} categoryID={'phukien'} />
                 </div>
                 <img style={{ width: 1000 }} src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp" alt="" />
             </main>

@@ -87,11 +87,17 @@ function MySwiper({ children }) {
     </>
 }
 
-function ProductBlock({ backgroundColor, categoryID }) {
+function ProductBlock({ backgroundColor, categoryID, setLoading }) {
     const [statusCode, setStatusCode] = useState(false);
     let products = [];
     let productComponents = [];
+
+    
+
     useEffect(() => {
+        
+
+
         async function getProducts(id, categoryID, limit) {
             products = [];
             productComponents = [];
@@ -107,7 +113,7 @@ function ProductBlock({ backgroundColor, categoryID }) {
         function genarateProduct() {
             for (let p of products) {
                 productComponents.push(
-                    <Product key={p.sku} props={p} />
+                    <Product setLoading={setLoading} key={p.sku} props={p} />
                 )
             }
         }
@@ -167,7 +173,7 @@ function ProductBlock({ backgroundColor, categoryID }) {
                             {
                                 statusCode === true ? swiperComponents[categoryID].map((s, i) => {
                                     return <SwiperSlide key={categoryID + i}>
-                                            {s}
+                                        {s}
                                     </SwiperSlide>
                                 }) : "Loading...."
                             }

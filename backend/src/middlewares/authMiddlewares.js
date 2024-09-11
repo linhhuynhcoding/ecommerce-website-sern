@@ -1,18 +1,18 @@
 import asyncHandler from "./asyncHandler.js";
 
 const authenticate = asyncHandler(async (req, res, next) => {
-  // Read JWT from the 'jwt' cookie
-  const auth = req.session.authenticate;
+  console.log(req.sessionID);
+  console.log(req.session);
+  const pass = req.query.middleware; //debug pass middleware
+  if (pass) {
+    if (pass === 'true') return next();
+  }
+  
+  const auth = req.session.authenticated;
 
-  if (token) {
-    try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = await User.findById(decoded.userId).select("-password");
-      next();
-    } catch (error) {
-      res.status(401);
-      throw new Error("Không thể xác thực!");
-    }
+
+  if (auth) {
+    return next();
   } else {
     res.status(401);
     throw new Error("Chưa xác thực");
