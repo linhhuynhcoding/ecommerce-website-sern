@@ -83,6 +83,23 @@ main,
         z-index: 1;
     }
     
+    .is-flex {
+        display: flex !important;
+    }
+
+    .is-flex-row {
+        flex-direction: row;
+        justify-content: space-between !important;
+    }
+    .is-flex-column {
+
+    }
+    .is-flex-end {
+        align-items: flex-end;
+    }
+    .is-flex-space-between {
+        justify-content: space-between !important; 
+    }
     
     .p-datatable-wrapper {
         height: 100%;

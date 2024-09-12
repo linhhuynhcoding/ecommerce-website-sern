@@ -11,6 +11,7 @@ import Footer from '../../components/Footer';
 import Loading from '../../components/Loading/index.jsx';
 import Info from './Info.jsx';
 import Address from './Address.jsx';
+import OrderUser from './OrderUser.jsx';
 //---------------PRIME REACT
 import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
@@ -18,7 +19,6 @@ import { ProgressSpinner } from 'primereact/progressspinner';
 import { Calendar } from 'primereact/calendar';
 import { Button } from 'primereact/button';
 import { RadioButton } from 'primereact/radiobutton';
-
 
 //---------------ANOTHER COMPONENTS
 //________API SERVICE
@@ -33,7 +33,7 @@ import {
 function Profile() {
 
     const [loading, setLoading] = useState(false);
-    const [select, setSelect] = useState('address'); //info, order, address
+    const [select, setSelect] = useState('order'); //info, order, address
 
     const toast = useRef(null);
     const username = localStorage.getItem("username")
@@ -60,7 +60,7 @@ function Profile() {
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <title>Đăng nhập</title>
+            <title>Trang cá nhân</title>
 
         </Helmet>
         <Header onMenu={true} />
@@ -92,6 +92,7 @@ function Profile() {
                     
                     { select === 'info' ? < Info setLoading={setLoading} showError={showError} showSuccess={showSuccess}/> : null}
                     { select === 'address' ? < Address setLoading={setLoading} showError={showError} showSuccess={showSuccess}/> : null}
+                    { select === 'order' ? < OrderUser loading={loading} setLoading={setLoading} showError={showError} showSuccess={showSuccess}/> : null}
                 
                     <div>
                     </div>

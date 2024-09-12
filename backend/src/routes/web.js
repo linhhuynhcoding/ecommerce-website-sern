@@ -3,6 +3,8 @@ import productRoutes from './productRoutes.js';
 import userRoutes from './userRoutes.js';
 import homeRoutes from './homeRoutes.js';
 import cartRoutes from './cartRoutes.js';
+import orderRoutes from './orderRoutes.js';
+
 function initWebRoutes (app) {
     // router.get('/', homeController.home );
     // router.get('/crud', homeController.index);
@@ -11,6 +13,7 @@ function initWebRoutes (app) {
     app.use("/api/cart", cartRoutes);
     app.use("/api/products", productRoutes);
     app.use("/api/users", userRoutes);
+    app.use("/api/orders", orderRoutes);
     app.use("/", homeRoutes)
 
 }

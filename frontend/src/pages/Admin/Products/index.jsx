@@ -14,6 +14,8 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 
+import DetailProduct from './DetailProduct'
+
 //---------API SERVICE
 import { handleGetProducts } from './../../../service/ProductService';
 
@@ -32,8 +34,11 @@ let products = [
 // let products = [];
 
 function Products() {
+    const [visible, setVisible] = useState(false);
+
     const [selectedProducts, setSelectedProducts] = useState(null);
     const [statusCode, setStatusCode] = useState(null);
+    const [data, setData] = useState(null);
     // const [loading, setLoading] = useState(false);
 
     const [updateTab] = useOutletContext();
@@ -51,9 +56,17 @@ function Products() {
         updateTab('productBox');
 
     }, []);
+
     const imageBodyTemplate = (rowData) => {
-        return <img src={`${rowData.images[0]['imageURL']}`} className="product-image" />;
+        return <img src={`${rowData.images?.[0]?.['imageURL']}`} className="product-image" />;
     }
+
+    useEffect(() => {
+        if (data)
+            setVisible(true);
+    }, [data])
+
+    console.log(visible)
 
     return (
         <>
@@ -110,34 +123,26 @@ function Products() {
                                     <Column field="productName" header="Sản phẩm" style={{ width: '20%' }}></Column>
                                     <Column align={'center'} body={imageBodyTemplate} header="Image" style={{ width: '10%' }}></Column>
                                     <Column field="productPrice" header="Giá tiền" style={{ width: '5%' }}></Column>
-                                    <Column body={(rowData) => { return (
-                                        <div dangerouslySetInnerHTML={{__html: rowData.shortDes}}>
-                                        </div>                                        
-                                    )
-                                    }} 
-                                    header="Mô tả ngắn" style={{ width: '20%' }}></Column>
+                                    <Column body={(rowData) => {
+                                        return (
+                                            <div dangerouslySetInnerHTML={{ __html: rowData.shortDes }}>
+                                            </div>
+                                        )
+                                    }}
+                                        header="Mô tả ngắn" style={{ width: '20%' }}></Column>
                                     <Column field="categoryID" header="Danh mục" style={{ width: '10%' }}></Column>
                                     <Column field="quantity" header="Số lượng" style={{ width: '5%' }}></Column>
-                                    <Column body={(rowData) => { return rowData.brands['brandName']}} header="Hãng" style={{ width: '10%' }}></Column>
-                                    <Column header="" body={<><a href="#">Chi tiết</a></>} style={{ width: '5%' }}></Column>
+                                    <Column body={(rowData) => { return rowData?.brands?.['brandName'] }} header="Hãng" style={{ width: '10%' }}></Column>
+                                    <Column header="" body={(rowData) => { return <><a onClick={e => { setData(rowData); }}>Chi tiết</a></> }} style={{ width: '5%' }}></Column>
                                 </DataTable>
-                                : <DataTable size='small' stripedRows tableStyle={{ minWidth: '50rem' }}
-                                paginator rows={18} loading={true}>
-                                    <Column align={'center'} selectionMode="multiple" style={{ width: '10%' }} />
-                                    <Column field="sku" header="SKU" style={{ width: '10%' }}></Column>
-                                    <Column field="productName" header="Sản phẩm" style={{ width: '30%' }}></Column>
-                                    <Column align={'center'} body={imageBodyTemplate} header="Image" style={{ width: '10%' }}></Column>
-                                    <Column field="productPrice" header="Giá tiền" style={{ width: '10%' }}></Column>
-                                    <Column field="categoryID" header="Danh mục" style={{ width: '10%' }}></Column>
-                                    <Column field="quantity" header="Số lượng" style={{ width: '10%' }}></Column>
-                                    <Column field="brandCode" header="Hãng" style={{ width: '10%' }}></Column>
-                                    <Column header="" body={<><a href="$">Chi tiết</a></>} style={{ width: '10%' }}></Column>
-
-                                </DataTable>
+                                : null
                         }
                     </div>
                 </div>
-                <div></div>
+                {
+                    visible &&
+                    <DetailProduct data={data} setVisible={setVisible} />
+                }
             </div>
 
         </>

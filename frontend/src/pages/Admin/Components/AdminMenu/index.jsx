@@ -53,20 +53,14 @@ function AdminMenu({_id}) {
                             </div>
                             <div className={clsx(styles.nav__title)}>Thông tin người dùng</div>
                         </a></div>
-                    <div  onClick={() => {navigate('/admin/dashboard')}} id={'orderBox'} className={clsx(styles.navBox, {[styles.active] : _id === 'orderBox'})}>
+                    <div  onClick={() => {navigate('/admin/orders')}} id={'orderBox'} className={clsx(styles.navBox, {[styles.active] : _id === 'orderBox'})}>
                         <a className={clsx(styles.nav)} href="#">
                             <div className={clsx(styles.nav__icon)}>
                             <i class="fi fi-sr-order-history"></i>
                             </div>
                             <div className={clsx(styles.nav__title)}>Đơn hàng</div>
                         </a></div>
-                    <div  onClick={() => {navigate('/admin/dashboard')}} id={'orderDetailBox'} className={clsx(styles.navBox, {[styles.active] : _id === 'orderDetailBox'})}>
-                        <a className={clsx(styles.nav)} href="#">
-                            <div className={clsx(styles.nav__icon)}>
-                            <i class="fi fi-br-list"></i>
-                            </div>
-                            <div className={clsx(styles.nav__title)}>Chi tiết đơn hàng</div>
-                        </a></div>
+                    
                 </div>
             </div>
         </>

@@ -91,4 +91,40 @@
         }
     }
 
+    .DetailProduct{
+        transform: translateY(200px);
+        transition: all 2s;
+        background-color: #fff;
+        border-radius: 20px;
+        border: 2px solid black;
+        position: fixed;
+        right: 100px;
+        top: -200px;
+        z-index: 10;
+        height: fit-content;
+        padding: 10px;
+        width: 60%;
+        .FormBox {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        
+            .FieldBox {
+                margin: 10px ;
+                display: flex; 
+                flex-direction: column;
+        
+                align-items: flex-start;
+                > label {
+                    margin-right: 10px ;
+                }
+                > input {
+                    margin-right: 10px ;
+                }
+            }
+        }
+    }
+
 }
+

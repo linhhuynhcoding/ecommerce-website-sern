@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey : 'sku',
         as: "images",
       });
+      Product.hasMany(models.Attribute_Products, {
+        foreignKey : 'sku',
+        as: "attributes",
+      });
     }
   }
   Product.init(

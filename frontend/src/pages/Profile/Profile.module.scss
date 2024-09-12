@@ -48,29 +48,32 @@
                 margin-bottom: 10px;
 
             }
+
             .nav {
                 font-size: 14px;
                 padding: 2px;
                 text-align: left;
+
                 a {
 
                     color: black;
-                    
-                    &:hover{
-                        color: blue;                        
+
+                    &:hover {
+                        color: blue;
                         cursor: pointer;
                         opacity: .8;
                     }
 
-                    
-                    
+
+
                 }
-                
+
             }
+
             .clicked {
-                a{
-                    color: blue;                        
-                }                
+                a {
+                    color: blue;
+                }
             }
 
             .divider {
@@ -83,18 +86,22 @@
                 margin-top: 10px;
                 margin-bottom: 10px;
             }
-            text-wrap: wrap;    
+
+            text-wrap: wrap;
             box-sizing: border-box;
+
             .profileTitle {
                 box-sizing: border-box;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                > i {
+
+                >i {
                     font-size: 2em;
                     margin-right: 10px;
-                    
+
                 }
+
                 .nameBox {
                     box-sizing: border-box;
                     display: flex;
@@ -102,11 +109,11 @@
                     font-size: 0.7em;
                     text-align: left;
                     // text-overflow: clip;
-                    text-wrap: wrap;    
+                    text-wrap: wrap;
                     word-break: break-word;
-                   
+
                 }
-                
+
             }
 
 
@@ -115,7 +122,6 @@
         .DetailBox {
             width: 80%;
             margin-left: 10px;
-            background-color: yellow;
             flex-direction: column;
             justify-content: flex-start;
             display: flex;
@@ -131,12 +137,14 @@
                 flex-wrap: wrap;
                 align-items: flex-end;
                 justify-content: flex-start;
+
                 .FormField {
                     margin-right: 40px;
                 }
             }
 
-            .FormBox, .FormBoxAddress {
+            .FormBox,
+            .FormBoxAddress {
                 // text-align: left;
                 margin-top: 10px;
                 // padding: 0px 20px;
@@ -147,7 +155,7 @@
                     flex-direction: row !important;
 
                     margin-bottom: 30px !important;
-                    
+
                 }
 
                 .FormField {
@@ -156,14 +164,15 @@
                     margin-top: 8px;
                     margin-bottom: 4px;
 
-                    .ratio  {
+                    .ratio {
                         margin-left: 20px;
                         width: fit-content;
                         display: flex;
                         flex-direction: row;
                         justify-content: flex-start;
                         align-items: flex-end;
-                        > label {
+
+                        >label {
                             margin-left: 10px;
                             line-height: 0px;
                         }
@@ -185,7 +194,7 @@
                         padding-bottom: 5px;
                         padding-left: 5px;
                         padding-right: 5px;
-                        
+
                     }
 
                     input[type=submit] {
@@ -207,6 +216,187 @@
             }
         }
 
+        .OrderBox {
+            width: 80%;
+            margin-left: 10px;
+            // background-color: yellow;
+            flex-direction: column;
+            justify-content: flex-start;
+            display: flex;
+            border-radius: 10px;
+            // background-color: #fff;
+            box-sizing: inherit;
+            // padding: 20px;
+            text-align: left;
+
+            .TableContainer {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                height: 100% !important;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                :nth-child(1) {                                            
+                    :first-child {
+                        // height: 200px;
+                        // min-height: 100px;
+
+                    }
+                    // min-height: 300px;
+                    
+                    height: fit-content !important ;
+                }
+            }
+            .CartBox {
+                h3 {
+                    margin-bottom: 10px;
+                }
+                text-align: left;
+                flex-direction: column;
+                align-items: stretch;
+                justify-content: flex-start;
+                align-content: center;
+                display: flex;
+                margin-bottom: 10px;
+    
+                border-radius: 10px;
+                background-color: #fff;
+                box-sizing: inherit;
+                padding: 20px 20px;
+    
+                font-size: 1em;
+                font-weight: 600;
+                input {
+                    height: 30px;
+                    margin-left: 40px;
+                    margin-right: 40px;
+                }
+                .Payment {
+                    padding: 0px;
+                    h3 {
+                        margin-bottom: 10px;
+                    }
+                    > label {
+                        margin-left: 10px;
+                        font-weight: 300;
+                    }
+                    
+                }
+                
+
+    
+                .TableBox {
+                    box-sizing: border-box;
+                    height: 100%;
+                    padding: 10px;
+                    border: 0.1px solid rgb(194, 194, 194);
+                }
+                .Table {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    box-sizing: border-box;
+                    height: 100%;
+                    border-radius: 6px;
+                    img {
+                        box-sizing: border-box;
+                        width: auto;
+                        height: auto;
+                        max-height: 60px;
+                    }
+                    .AdjustQuantity {
+                        > span > input {
+                            width: 40px;
+                        } 
+                        > span {
+                            margin-bottom: 10px;
+                        }
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        align-items: stretch;
+                    }
+                }
+            
+                >div {
+                    padding: 10px;
+                    // background-color: crimson;
+                }
+    
+                >div+div {
+                    margin-bottom: 10px;
+    
+                }
+    
+                .nav {
+                    font-size: 14px;
+                    padding: 2px;
+                    text-align: left;
+    
+                    a {
+    
+                        color: black;
+    
+                        &:hover {
+                            color: blue;
+                        }
+    
+    
+                    }
+    
+                }
+    
+                .clicked {
+                    a {
+                        color: blue;
+                    }
+                }
+    
+                .divider {
+                    display: flex;
+                    box-sizing: border-box;
+                    border-bottom: 0.5px solid rgb(197, 197, 197);
+                    padding: 0px;
+                    height: 0px;
+                    width: 100%;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+    
+                text-wrap: wrap;
+                box-sizing: border-box;
+    
+                .profileTitle {
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+    
+                    >i {
+                        font-size: 2em;
+                        margin-right: 10px;
+    
+                    }
+    
+                    .nameBox {
+                        box-sizing: border-box;
+                        display: flex;
+                        flex-direction: column;
+                        font-size: 0.7em;
+                        text-align: left;
+                        // text-overflow: clip;
+                        text-wrap: wrap;
+                        word-break: break-word;
+    
+                    }
+    
+                }
+    
+    
+            }
+    
+        }
     }
 }
 

@@ -12,20 +12,20 @@ export const GetAllProduct = (idProduct, category, page, pageSize) => {
                     limit: pageSize ?? null,
                     offset: page ?? null,
                     where: {
-                        
+
                     },
                     attributes: {
-                        exclude: ['des', 'brandCode', 'warranty',]
+                        exclude: ['des']
                     },
                     include: [
                         {
                             model: db.Categories,
                             as: 'categories',
-                            where : {                                
+                            where: {
                                 [Op.or]: [
                                     { parentID: (category === 'all' ? false : category) },
                                     { categoryID: (category === 'all' ? false : category) }
-                                ],    
+                                ],
                             }
                         },
                         {
@@ -37,6 +37,8 @@ export const GetAllProduct = (idProduct, category, page, pageSize) => {
                             where: {
                                 imageID: 1,
                             },
+                            nest: true,
+
                         },
                         {
                             model: db.Brands,
@@ -60,6 +62,93 @@ export const GetAllProduct = (idProduct, category, page, pageSize) => {
                 });
             }
             resolve(products);
+
+        } catch (e) {
+            reject(e)
+        }
+    });
+}
+
+export const FindProductBySKU = (sku) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const products = await db.Product.findOne({
+                where: { sku: Number(sku) },
+                include: [
+                    // {
+                    //     model: db.Attribute_Products,
+                    //     as: "attributes",
+                    //     attributes: {
+                    //         exclude: ['sku']
+                    //     },
+                    //     include: [
+                    //         {
+                    //             model: db.Attributes,
+                    //             as: "attri_name",
+                    //             attributes: {
+                    //                 exclude: ['attri_code']
+                    //             },
+                    //             nest: false
+
+                    //         }
+                    //     ],
+
+                    // },
+                    {
+                        model: db.Product_Images,
+                        as: "images",
+                        attributes: {
+                            exclude: ['sku']
+                        },
+                    },
+                    {
+                        model: db.Brands,
+                        as: "brands",
+                        attributes: {
+                            exclude: ['brandCode']
+                        },
+                    }
+                ],
+                // raw: true,
+                nest: true
+            });
+
+            resolve(products);
+
+        } catch (e) {
+            reject(e)
+        }
+    });
+}
+
+export const UpdateProductInfo = (
+    sku,
+    productName,
+    productPrice,
+    categoryID,
+    warranty,
+    quantity,
+    brandCode
+) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            const product = await db.Product.findOne({
+                where: { sku: Number(sku) },
+            });
+
+            await product.update({
+                productName: productName,
+                productPrice: productPrice,
+                categoryID: categoryID,
+                warranty: warranty,
+                quantity: quantity,
+                brandCode: brandCode,
+            })
+
+            await product.save();
+
+            resolve(product);
 
         } catch (e) {
             reject(e)

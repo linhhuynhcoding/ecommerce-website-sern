@@ -24,7 +24,7 @@ const handleUpdateInfoUser = async (user) => {
 const handleGetInfoUser = async (username) => {
     const res = await axios.get('/api/users/profile', {
         params: {
-            username: username,
+            username: username,            
         },
         withCredentials: true
     }).then((r) => {

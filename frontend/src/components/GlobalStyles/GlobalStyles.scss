@@ -40,10 +40,16 @@
 
     .is-flex-row {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-between !important;
     }
     .is-flex-column {
 
+    }
+    .is-flex-end {
+        align-items: flex-end;
+    }
+    .is-flex-space-between {
+        justify-content: space-between !important; 
     }
 
     .is-block {

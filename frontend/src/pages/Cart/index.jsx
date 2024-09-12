@@ -3,7 +3,7 @@ import styles from './Cart.module.scss';
 
 import { Helmet } from 'react-helmet';
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 //---------------MY COMPONENTS
 import Header from '../../components/Header';
@@ -22,6 +22,8 @@ import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { carts, getCart } from '../../utils/HelperCart';
 //________API SERVICE
 import { handleRemovefromCart, handleUpdateCart } from './../../service/CartService.js'
+import { handleAuth } from './../../service/UserService.js'
+import { handleCreateOrder } from './../../service/OrderService.js'
 
 import { toMoney } from './../../utils/StringUtil'
 
@@ -49,6 +51,12 @@ function Cart() {
     const [_totalPrice, setTotalPrice] = useState(0);
     const [_quantity, setQuantity] = useState(0);
 
+    const nevigate = useNavigate();
+    const preList = useRef({
+        amount: 0,
+        ship: 30000,
+        products: []
+    })
     const toast = useRef(null);
 
     const showError = (content) => {
@@ -68,8 +76,8 @@ function Cart() {
         setLoading(true);
         const _sku = e.target?.['id'];
         const _quan = e.target?.['value'];
-        
-        if (!localStorage.getItem('username')){
+
+        if (!localStorage.getItem('username')) {
             alert('Chưa đăng nhập');
             window.location.href = '/login';
             return;
@@ -91,15 +99,15 @@ function Cart() {
         e.preventDefault();
         const sku = e.target?.dataset?.['id'];
         setLoading(true);
-        
+
         const checkConfirm = window.confirm("Bạn muốn xóa chứ?");
-        
+
         if (!checkConfirm) {
             setLoading(false);
             return;
         }
 
-        if (!localStorage.getItem('username')){
+        if (!localStorage.getItem('username')) {
             alert('Chưa đăng nhập');
             window.location.href = '/login';
         }
@@ -117,6 +125,59 @@ function Cart() {
         }
     }
 
+    const continueHandler = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        const list = selectedProducts;
+        
+        if (!localStorage.getItem('username')) {
+            alert('Chưa đăng nhập');
+            window.location.href = '/login';
+            return;
+        }
+        
+        if (!list) {
+            alert('Hãy chọn sản phẩm');
+            setLoading(false);
+            return;
+        }
+
+        await handleAuth().then(async (res) => {
+            if (res?.status === 200) {
+
+                
+                const pol = await list.map((p) => {
+                    return {
+                        sku: p?.['sku'],
+                        price: p?.['info']?.['productPrice'] * p?.['quantity'],
+                        unitprice: p?.['info']?.['productPrice'],
+                        productName: p?.['info']?.['productName'],
+                        quantity: p?.['quantity'],
+                        image: p?.['info']?.['images'][0]['imageURL']
+                    }
+                })
+
+                while (pol.length === 0) {
+
+                };
+                preList.current.products = pol;
+                preList.current.amount = _totalPrice;
+                console.log(preList);
+                nevigate('/placeorder', {
+                    state: {
+                        preList: preList
+                    }
+                })
+                // window.location.href = '/placeorder';
+            }
+            else {
+                alert('Chưa đăng nhập');
+                window.location.href = '/login';
+            }
+        })
+
+    }
+
     useEffect(() => {
         let res = 0;
         const list = selectedProducts;
@@ -124,10 +185,11 @@ function Cart() {
         for (let i of list) res += i?.info?.['productPrice'] * i?.quantity;
 
         setTotalPrice(res);
+        // console.log(selectedProducts)
     }, [selectedProducts])
 
     useEffect(() => {
-        getCart().then(() => { setStatusCode(200); console.log(carts.current?.['products']) });
+        getCart().then(() => { setStatusCode(200); });
     }, [])
 
 
@@ -167,9 +229,9 @@ function Cart() {
                                         <Column align={'center'}
                                             body={(rowData) => {
                                                 return <>
-                                                    <div className={clsx(styles.AdjustQuantity)}> 
+                                                    <div className={clsx(styles.AdjustQuantity)}>
                                                         <InputNumber min={1} max={rowData?.info?.totalQuantity} name={rowData?.sku}
-                                                        value={rowData?.quantity} onValueChange={updateHandler} showButtons mode="decimal" id={rowData?.sku} />
+                                                            value={rowData?.quantity} onValueChange={updateHandler} showButtons mode="decimal" id={rowData?.sku} />
                                                         <div>
                                                             <a data-id={rowData?.sku} onClick={removeHandler}>Xóa</a>
                                                         </div>
@@ -179,7 +241,7 @@ function Cart() {
                                             header="Số lượng" style={{ width: '1%' }}>
                                         </Column>
                                         <Column align={'right'}
-                                        body={(rowData) => { return toMoney(String(rowData?.info?.['productPrice'] * rowData?.quantity)) }} header="Thành tiền" style={{ width: '5%' }}></Column>
+                                            body={(rowData) => { return toMoney(String(rowData?.info?.['productPrice'] * rowData?.quantity)) }} header="Thành tiền" style={{ width: '5%' }}></Column>
                                     </DataTable>
                                     : <div className={clsx('is-free')}>
                                         <Loading></Loading>
@@ -193,8 +255,8 @@ function Cart() {
                             <h4>Thành tiền</h4>
                             <h5>{toMoney(String(_totalPrice))}</h5>
                         </div>
-                        <button className={clsx(styles.PaymentBtn)}>
-                            Thanh toán
+                        <button onClick={continueHandler} className={clsx(styles.PaymentBtn)}>
+                            Tiếp tục
                         </button>
 
                     </div>

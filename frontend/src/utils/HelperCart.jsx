@@ -4,6 +4,14 @@ import {
     handleGetCart,
 } from './../service/CartService';
 
+export let preOrderList = {
+    current:
+    {
+        amount: 0,
+        products: []
+    }
+}
+
 export const carts = {
     current:
     {
@@ -15,6 +23,9 @@ export const carts = {
 // totalPrice: 0,
 // products: []
 // });
+export async function updatepreOrderList(pol) {
+    preOrderList.current = pol;
+}
 
 export async function getCart() {
     

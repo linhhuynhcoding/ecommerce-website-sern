@@ -1,0 +1,15 @@
+.OrderBox {
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: auto;
+    .TableContainer {
+        overflow: auto;
+    }
+    .CartBox {
+        overflow: auto;
+        .TableBox {
+            margin-top: 20px;
+            overflow: auto;
+        }
+    }
+}
