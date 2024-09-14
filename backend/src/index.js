@@ -13,10 +13,10 @@ import cookieParser from 'cookie-parser'
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT_BACKEND || 8080;
 
 app.use(cors({ 
-    origin: `${process.env.URL_FRONTEND}:{process.env.PORT_FRONTEND}`  ,
+    origin: `${process.env.URL_FRONTEND}:${process.env.PORT_FRONTEND}`  ,
     methods:['GET','POST','PUT','DELETE'],
     credentials: true, 
 }));
