@@ -64,15 +64,13 @@ function Orders() {
 
     const orderlist = useRef([])
 
-    const markPaid = async (orderId) => {
-        console.log(orderId)
-        await markOrderAsPaid(orderId).then((res) => {
+    const markPaid = async () => {
+        await markOrderAsPaid(selectedOrders?.OrderID).then((res) => {
             
         })
     }
-    const markShipped = async (orderId) => {
-        console.log(orderId)
-        await markOrderAsDelivered(orderId).then((res) => {
+    const markShipped = async () => {
+        await markOrderAsDelivered(selectedOrders?.OrderID).then((res) => {
             
         })
     }
@@ -91,12 +89,12 @@ function Orders() {
         if (status === 1) {
             console.log('catch')
             menuModel.current = [
-                { label: 'Đã thanh toán', command: (e) => {markPaid(selectedOrders?.OrderID); console.log(selectedOrders)} },
+                { label: 'Đã thanh toán', command: () => {markPaid(); console.log(selectedOrders)} },
             ]
         }
         else if (status === 2) {
             menuModel.current = [
-                { label: 'Đã giao hàng', command: () => { markShipped(selectedOrders?.OrderID)} },
+                { label: 'Đã giao hàng', command: () => { markShipped()} },
             ]
         }
         else {

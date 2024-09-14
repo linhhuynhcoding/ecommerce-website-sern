@@ -3,6 +3,7 @@ import {
     GetAllProduct,
     FindProductBySKU,
     UpdateProductInfo,
+    CreateProduct,
 } from '../services/ProductService';
 class ProductController {
     handleGetAllProducts = async (req, res) => {
@@ -21,6 +22,33 @@ class ProductController {
             errMessage: 'OK',
             products
         });
+    }
+
+    handleCreateProduct = async (req, res) => {
+
+        const {
+            sku, productName, productPrice, 
+            categoryID, warranty, 
+            quantity, brandCode, images} = req?.body;
+
+        await CreateProduct(
+            sku, productName, productPrice, 
+            categoryID, warranty, 
+            quantity, brandCode, images
+        ).then(data => {
+            return res.status(200).json({
+                errCode: 0,
+                errMessage: 'Thêm sản phẩm vào Database thành công!',
+                data: data
+            });
+        }).catch(e => {
+            return res.status(505).json({
+                errCode: 1,
+                errMessage: 'Lỗi Server!',
+                e
+            });
+        })
+
     }
 
     handleFindProductBySKU = async (req, res) => {

@@ -58,7 +58,26 @@ const handleUpdateProduct = async (
     ).catch((e) => { return e });
     return res;
 }
+
+const handleCreateProduct = async (
+    sku, productName, productPrice,
+    categoryID, warranty,
+    quantity, brandCode, images
+) => {
+    const res = await axios.post('/api/products/create', 
+        { 
+            sku, productName, productPrice, 
+            categoryID, warranty, 
+            quantity, brandCode, images
+         }, 
+        { withCredentials: true }).then((r) => {
+        return r;
+    }).catch((e) => { return e });
+    return res;
+}
+
 export {
     handleGetProducts,
-    handleUpdateProduct
+    handleUpdateProduct,
+    handleCreateProduct
 };

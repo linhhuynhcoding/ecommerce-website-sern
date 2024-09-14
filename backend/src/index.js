@@ -16,7 +16,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 app.use(cors({ 
-    origin: 'http://192.168.1.2:3000' ,
+    origin: `${process.env.URL_FRONTEND}:{process.env.PORT_FRONTEND}`  ,
     methods:['GET','POST','PUT','DELETE'],
     credentials: true, 
 }));

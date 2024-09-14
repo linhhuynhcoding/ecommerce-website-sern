@@ -43,13 +43,13 @@ function Register() {
         else {
             setLoading(true);
             await handleCreateUserRequest(email, username, password).then((res) => {
-                if (Number(res.data['errCode']) === 0) {
+                if (Number(res?.data?.['errCode']) === 0) {
                     setLoading(false);
                     window.location.href = '/register/verify';
                     
                 }
                 // navigate('/register/verify');
-                else if (Number(res.data['errCode']) === 1) {
+                else if (Number(res?.data?.['errCode']) === 1) {
                     setLoading(false);
                     showWarn("Tên đăng nhập đã tồn tại!")
                     console.log("Tên đăng nhập đã tồn tại!")

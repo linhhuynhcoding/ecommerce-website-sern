@@ -155,3 +155,40 @@ export const UpdateProductInfo = (
         }
     });
 }
+
+export const CreateProduct = (sku, productName, productPrice,
+    categoryID, warranty, quantity, brandCode, images) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            await db.Product.bulkCreate([{
+                sku: sku,
+                productName: productName,
+                productPrice: productPrice,
+                categoryID: categoryID,
+                warranty: warranty,
+                quantity: quantity,
+                brandCode: brandCode,
+            }], {
+                validate: true,
+            }).then(async () => {
+                await db.Product_Images.bulkCreate(
+
+                    images.map((image, i) => {
+                        return {
+                            sku: Number(sku),
+                            imageID: Number(i + 1),
+                            imageURL: image['imageURL'],
+                        }
+                    })
+
+                    , {
+                        validate: true,
+                    });
+            });
+            resolve();
+        } catch (e) {
+            reject(e);
+        }
+    });
+}

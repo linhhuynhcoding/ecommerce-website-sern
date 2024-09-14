@@ -32,7 +32,7 @@ function AdminMenu({_id}) {
                             </div>  
                             <div className={clsx(styles.nav__title)}>Sản phẩm</div>
                         </a></div>
-                    <div  onClick={() => {navigate('/admin/dashboard')}} id={'addproductBox'} className={clsx(styles.navBox, {[styles.active] : _id === 'addproductBox'})}>
+                    <div  onClick={() => {navigate('/admin/addNew')}} id={'addproductBox'} className={clsx(styles.navBox, {[styles.active] : _id === 'addproductBox'})}>
                         <a className={clsx(styles.nav)} href="#">
                             <div className={clsx(styles.nav__icon)}>
                             <i class="fi fi-sr-add"></i>

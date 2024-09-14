@@ -8,14 +8,18 @@ const router = express.Router();
 router
     .route('/')
     .get(ProductController.handleGetAllProducts);
-    // .get(test, formidable(), ProductController.handleGetAllProducts);
-    // .get(ProductController.handleGetAllProducts);
-    
-    router
+// .get(test, formidable(), ProductController.handleGetAllProducts);
+// .get(ProductController.handleGetAllProducts);
+
+router
+    .route('/create')
+    .post(ProductController.handleCreateProduct)
+
+router
     .route('/get/:sku')
     .get(ProductController.handleFindProductBySKU);
-    
-    router
+
+router
     .route('/update/:sku')
     .put(ProductController.handleUpdateProduct);
 

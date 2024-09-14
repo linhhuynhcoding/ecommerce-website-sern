@@ -13,6 +13,7 @@ import Profile from '../pages/Profile'
 import Cart from '../pages/Cart';
 
 import Order from '../pages/Order'
+import AddNew from '../pages/Admin/Products/AddNew';
 
 // Public routes
 const publicRoutes = [
@@ -38,6 +39,7 @@ const adminRoutes = [
     {path : 'dashboard', component : Dashboard},
     {path : 'products', component : Products},
     {path : 'orders', component : Orders},
+    {path : 'addNew', component : AddNew},
 ]
 
 export { publicRoutes, adminRoutes, privateRoutes };

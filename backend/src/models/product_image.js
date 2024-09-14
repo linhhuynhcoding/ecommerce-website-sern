@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Product_Images.belongsTo(models.Product, {
-        foreignKey: 'sku'
-      });
+      // Product_Images.belongsTo(models.Product, {
+      //   foreignKey: 'sku'
+      // });
     }
   }
   Product_Images.init(

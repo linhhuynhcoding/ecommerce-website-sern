@@ -43,6 +43,8 @@ export const CreateUser = (email, username, password) => {
     });
 }
 
+
+
 export const GetAllUser = (idUser) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -75,6 +77,25 @@ export const GetDetailUserInfo = (idUser) => {
             });
 
             resolve(users);
+
+        } catch (e) {
+            reject(e)
+        }
+    });
+}
+export const GetEmailUser = (idUser) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let users = {};
+
+            users = await db.User.findOne({
+                where: { userID: idUser },
+                attributes: { include: ['email'] }
+            });
+
+            console.log(users);
+
+            resolve(users['email']);
 
         } catch (e) {
             reject(e)

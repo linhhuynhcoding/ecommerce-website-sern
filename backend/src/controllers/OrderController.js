@@ -7,6 +7,12 @@ import {
     UpdateShippedOrder,
 } from '../services/OrderService';
 
+import {
+    GetEmailUser
+} from '../services/UserService';
+
+import { sendDoneOrder } from './../utils/EmailUtil'
+
 class OrderController {
     handleCreateOrder = async (req, res) => {
         const {userID, shipfee, amount, notes, products} = req?.body;
@@ -156,9 +162,13 @@ class OrderController {
             });
         }
         else {
-            await UpdateShippedOrder(orderId).then((data) => {
+            await UpdateShippedOrder(orderId).then(async (data) => {
                 console.log(data);
                 if (data) {
+                    await GetEmailUser(data?.userID).then((email) => {
+                        sendDoneOrder(email, orderId);
+                    })
+                    
                     return res.status(200).json({
                         errCode: 0,
                         errMessage: 'Cập nhật thành công!',
